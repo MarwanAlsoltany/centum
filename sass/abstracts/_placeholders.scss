@@ -1,0 +1,22 @@
+%pack-base {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+%tier-base {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: stretch;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+%cell-base {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  width: auto;
+  height: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  position: relative;
+}

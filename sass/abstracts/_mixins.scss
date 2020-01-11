@@ -1,0 +1,261 @@
+@mixin viewport($breakpoint: 'md', $type: 'max', $dimension: 'width') {
+  @if ($media-queries) {
+    $property: null;
+    $value: null;
+    @if ($type != '') {
+      $property: #{$type}-#{$dimension + ': ' };
+    }
+    @else {
+      $property: #{$dimension + ': ' };
+    }
+    @if map-has-key($media-breakpoints, #{$breakpoint}) {
+      $value: map-get($media-breakpoints, #{$breakpoint});
+    } 
+    @else {
+      $value: $breakpoint;
+    }
+    
+    $query: $property + if(str-index('' + $value, 'px'), ($value - 0.02), $value);
+    @media only screen and (#{$query}) {
+      @content;
+    }
+  }
+}
+
+@mixin make-options($properties, $infix: "") {
+  @if (is-type('map', $properties)) {
+    @each $property-alias, $property-map in $properties {
+      $property: map-get($property-map, 'name');
+      $wrapper: map-get($property-map, 'wrapper');
+      @each $value-alias, $value in map-get($property-map, 'values') {
+        .#{$property-alias + $infix}\:#{$value-alias} {
+          @if ($wrapper != null) {
+            #{$property}: str-replace($wrapper, var, #{$value});
+          }
+          @else {
+            #{$property}: #{$value};
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin make-flex-grid-pack($flex-grid) {
+  $pack-name: map-get(map-get($flex-grid, 'pack'), 'name');
+  $breakpoints: map-get(map-get($flex-grid, 'pack'), 'map');
+  $containers: map-get(map-get($flex-grid, 'tier'), 'map');
+  $gutter-size: map-get(map-get($flex-grid, 'gutter'), 'size');
+  $gutter-axis: map-get(map-get($flex-grid, 'gutter'), 'axis');
+  $responsive: map-get(map-get($flex-grid, 'pack'), 'responsive');
+  $properties: map-get(map-get($flex-grid, 'pack'), 'properties');
+
+  %pack {
+    @if (is-type('number', $gutter-size)) {
+      @extend %pack-base;
+      @if ($gutter-axis == 'x' or $gutter-axis == 'y') {
+        padding-#{if($gutter-axis == 'x', 'left', 'top')}: $gutter-size;
+        padding-#{if($gutter-axis == 'x', 'right', 'bottom')}: $gutter-size;
+      }
+      @else {
+        padding: $gutter-size;
+      }
+    }
+    @else {
+      @extend %pack-base;
+    }
+  }
+  .#{$pack-name} {
+    @extend %pack;
+    @if (is-type('map', $breakpoints)) {
+      @each $breakpoint-key, $value in $breakpoints {
+        @include viewport($value, min) {
+          max-width: map-get($containers, $breakpoint-key);
+        }
+      }
+    }
+  }
+  @if ($properties) {
+    @include make-options($properties);
+    @if ($responsive) {
+      @if (is-type('map', $breakpoints)) {
+        @each $breakpoint-key, $breakpoint-value in $breakpoints {
+          @include viewport($breakpoint-value, min) {
+            @if ($properties) {
+              @include make-options($properties, "-" + $breakpoint-key);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin make-flex-grid-tier($flex-grid) {
+  $tier-name: map-get(map-get($flex-grid, 'tier'), 'name');
+  $breakpoints: map-get(map-get($flex-grid, 'pack'), 'map');
+  $cell-name: map-get(map-get($flex-grid, 'cell'), 'name');
+  $gutter-name: map-get(map-get($flex-grid, 'gutter'), 'name');
+  $gutter-size: map-get(map-get($flex-grid, 'gutter'), 'size');
+  $gutter-axis: map-get(map-get($flex-grid, 'gutter'), 'axis');
+  $responsive: map-get(map-get($flex-grid, 'tier'), 'responsive');
+  $properties: map-get(map-get($flex-grid, 'tier'), 'properties');
+
+  %tier {
+    @if (is-type('number', $gutter-size)) {
+      @extend %tier-base;
+      @if ($gutter-axis == 'x' or $gutter-axis == 'y') {
+        margin-#{if($gutter-axis == 'x', 'left', 'top')}: $gutter-size * -1;
+        margin-#{if($gutter-axis == 'x', 'right', 'bottom')}: $gutter-size * -1;
+      }
+      @else {
+        margin: $gutter-size;
+      }
+    }
+    @else {
+      @extend %tier-base;
+    }
+  }
+  .#{$tier-name} {
+    @extend %tier;
+  }
+  .#{$tier-name}\:no-#{$gutter-name} {
+    @extend %tier;
+    @if ($gutter-axis == 'x' or $gutter-axis == 'y') {
+      margin-#{if($gutter-axis == 'x', 'left', 'top')}: 0;
+      margin-#{if($gutter-axis == 'x', 'right', 'bottom')}: 0;
+    }
+    @else {
+      margin: 0;
+    }
+    > [class*="#{$cell-name}"] {
+      @if ($gutter-axis == 'x' or $gutter-axis == 'y') {
+        padding-#{if($gutter-axis == 'x', 'left', 'top')}: 0;
+        padding-#{if($gutter-axis == 'x', 'right', 'bottom')}: 0;
+      }
+      @else {
+        padding: 0;
+      }
+    }
+    .sub-#{$cell-name} {
+      margin-#{if($gutter-axis == 'y', 'right', 'bottom')}: 0;
+    }
+  }
+  @if ($properties) {
+    @include make-options($properties);
+    @if ($responsive) {
+      @if (is-type('map', $breakpoints)) {
+        @each $breakpoint-key, $breakpoint-value in $breakpoints {
+          @include viewport($breakpoint-value, min) {
+            @if ($properties) {
+              @include make-options($properties, "-" + $breakpoint-key);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin make-flex-grid-cell($flex-grid) {
+  $cell-name: map-get(map-get($flex-grid, 'cell'), 'name');
+  $breakpoints: map-get(map-get($flex-grid, 'pack'), 'map');
+  $members: map-get(map-get($flex-grid, 'cell'), 'map');
+  $gutter-size: map-get(map-get($flex-grid, 'gutter'), 'size');
+  $gutter-axis: map-get(map-get($flex-grid, 'gutter'), 'axis');
+  $responsive: map-get(map-get($flex-grid, 'cell'), 'responsive');
+  $properties: map-get(map-get($flex-grid, 'cell'), 'properties');
+
+  %cell {
+    @if (is-type('number', $gutter-size)) {
+      @extend %cell-base;
+      @if ($gutter-axis == 'x' or $gutter-axis == 'y') {
+        padding-#{if($gutter-axis == 'x', 'left', 'top')}: $gutter-size;
+        padding-#{if($gutter-axis == 'x', 'right', 'bottom')}: $gutter-size;
+      }
+      @else {
+        padding: $gutter-size;
+      }
+    }
+    @else {
+      @extend %cell-base;
+    }
+  }
+  
+  .#{$cell-name}\:auto,
+  .#{$cell-name} {
+    @extend %cell;
+  }
+  .#{$cell-name}\:auto {
+    flex: 0 0 auto;
+  }
+  .#{$cell-name} {
+    flex: 1 1 auto;
+  }
+  @if (is-type('map', $members)) {
+    @each $member-key, $member-value in $members {
+      .#{$cell-name}\:#{$member-key} {
+        @extend %cell;
+        flex: 0 0 percentage($member-value);
+        max-width: percentage($member-value);
+      }
+    }
+  }
+  @if ($properties) {
+    @include make-options($properties);
+  }
+  @if ($responsive) {
+    @if (is-type('map', $breakpoints)) {
+      @each $breakpoint-key, $breakpoint-value in $breakpoints {
+        @include viewport($breakpoint-value, min) {
+          .#{$cell-name}-#{$breakpoint-key}\:auto {
+            flex: 0 0 auto;
+          }
+          @each $member-key, $member-value in $members {
+            .#{$cell-name}-#{$breakpoint-key}\:#{$member-key} {
+              flex: 0 0 percentage($member-value);
+              max-width: percentage($member-value);
+            }
+            @if (is-fraction($member-value * 100)) {
+              .#{$cell-name}-#{$breakpoint-key}\:floor {
+                &.#{$cell-name}-#{$breakpoint-key}\:#{$member-key} {
+                  flex: 0 0 floor(percentage($member-value));
+                  max-width: floor(percentage($member-value));
+                }
+              }
+            }
+          }
+          @if ($properties) {
+            @include make-options($properties, "-" + $breakpoint-key);
+          }
+        }
+      }
+    }
+  }
+  .sub-#{$cell-name} {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    @if (is-type('number', $gutter-size)) {
+      &:not(:only-child) {
+        margin-#{if($gutter-axis == 'y', 'right', 'bottom')}: $gutter-size * 2;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+@mixin prefix($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
+}
+
+@mixin vendorize($property, $value) {
+  @include prefix($property, $value, (webkit, moz, ms, o));
+}

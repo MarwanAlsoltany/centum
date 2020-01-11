@@ -1,0 +1,50 @@
+// used in grid mixins and viewport mixin
+$breakpoints: (
+  'xs': 36em, // 576px,
+  'sm': 48em, // 768px,
+  'md': 62em, // 992px,
+  'lg': 80em, // 1280px,
+  'xl': 100em, // 1600px,
+) !default;
+
+// used in grid mixins
+$containers: (
+  'xs': 34em, // 544px,
+  'sm': 46em, // 736px,
+  'md': 60em, // 960px,
+  'lg': 75em, // 1200px,
+  'xl': 95em // 1520px
+) !default;
+
+// used in grid mixins
+$cells: (
+  '0': 0, 
+  '5': 0.05, 
+  '10': 0.1, 
+  '15': 0.15, 
+  '16': 4/25, 
+  '20': 0.2, 
+  '25': 0.25, 
+  '30': 0.3, 
+  '33': 1/3, 
+  '35': 0.35, 
+  '40': 0.4, 
+  '45': 0.45, 
+  '48': 0.48, 
+  '50': 0.5, 
+  '55': 0.55, 
+  '60': 0.6, 
+  '65': 0.65, 
+  '66': 2/3, 
+  '70': 0.7, 
+  '75': 0.75, 
+  '80': 0.8, 
+  '85': 0.85, 
+  '90': 0.9, 
+  '95': 0.95, 
+  '100': 1
+) !default;
+
+// used in viewport mixin
+$media-queries: true;
+$media-breakpoints: map-merge((), $breakpoints);

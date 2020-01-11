@@ -1,0 +1,42 @@
+@function is-type($type, $var) {
+  @return type-of($var) == #{$type};
+}
+
+@function is-fraction($number) {
+  @return $number != floor($number);
+}
+@function percentages($map-or-list, $negative: null) {
+  $returnValue: ();
+  @if (is-type(map, $map-or-list)) {
+    @each $key, $value in $map-or-list {
+      $pair: ($key: percentage(if($negative == negative, -1 * $value, $value)));
+      $returnValue: map-merge($returnValue, $pair);
+    }
+  }
+  @else if (is-type(list, $map-or-list)) {
+    @each $value in $map-or-list {
+      $item: percentage(if($negative == negative, -1 * $value, $value));
+      $returnValue: append($returnValue, $item, comma);
+    }
+  }
+  @return $returnValue;
+}
+
+@function reverse-cubic-bezier($arg1, $arg2, $arg3, $arg4) {
+  @return 1 - ($arg3), 1 - ($arg4), 1 - ($arg1), 1 - ($arg2);  
+}
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
