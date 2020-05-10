@@ -9,8 +9,8 @@ mix
     processCssUrls: false,
     // autoprefixer: false
   })
-  .sourceMaps()
-  .webpackConfig({
-    devtool: 'inline-source-map'
-  })
+  // .sourceMaps()
+  // .webpackConfig({
+  //   devtool: 'inline-source-map'
+  // })
 ;
