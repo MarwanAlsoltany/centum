@@ -5,6 +5,7 @@
 @function is-fraction($number) {
   @return $number != floor($number);
 }
+
 @function percentages($map-or-list, $negative: null) {
   $returnValue: ();
   @if (is-type(map, $map-or-list)) {

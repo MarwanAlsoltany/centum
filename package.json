@@ -1,0 +1,35 @@
+{
+  "name": "centum",
+  "version": "1.0.0",
+  "description": "A hundred based CSS flex grid system with full flexibility to customize it exactly to your needs.",
+  "main": "./webpack.mix.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js && rm mix-manifest.json",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js && rm mix-manifest.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarwanAlsoltany/centum.git"
+  },
+  "keywords": [
+    "CSS",
+    "Grid System",
+    "CSS Grid System",
+    "CSS Flex",
+    "CSS Flex Box"
+  ],
+  "author": "Marwan Al-Soltany",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/MarwanAlsoltany/centum/issues"
+  },
+  "homepage": "https://github.com/MarwanAlsoltany/centum#readme",
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "laravel-mix": "^5.0.1",
+    "sass": "^1.24.4",
+    "sass-loader": "^8.0.1"
+  }
+}
