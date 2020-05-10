@@ -282,7 +282,7 @@ $flex-grid: (
 | --- | --- | --- |
 | Pack | `pack:{type?}` <br/> `{p-option}-{breakpoint?}:{value}` | `pack` <br/> `pack:no-gutters` <br/> `extent-xl:medium` <br/> `extent:wide` |
 | Tier | `tier:{type?}` <br/> `{t-option}-{breakpoint?}:{value}` | `tier` <br/> `tier:no-gutters` <br/> `justify-md:between` <br/> `justify:center` |
-| Cell | `cell-{breakpoint?}:{percentage}` <br/> ```{c-option}-{breakpoint?}:{percentage|number|word}``` | `cell` <br/> `cell-md:25` <br/> `lead-xs:3` <br/> `rear:1` |
+| Cell | `cell-{breakpoint?}:{percentage}` <br/> <code>{c-option}-{breakpoint?}:{percentage&#124;number&#124;word}</code> | `cell` <br/> `cell-md:25` <br/> `lead-xs:3` <br/> `rear:1` |
 
 #### Variables mappings
 
