@@ -22,7 +22,7 @@
   }
 }
 
-@mixin make-options($properties, $infix: "") {
+@mixin make-options($properties, $infix: '') {
   @if (is-type('map', $properties)) {
     @each $property-alias, $property-map in $properties {
       $property: map-get($property-map, 'name');
@@ -30,7 +30,7 @@
       @each $value-alias, $value in map-get($property-map, 'values') {
         .#{$property-alias + $infix}\:#{$value-alias} {
           @if ($wrapper != null) {
-            #{$property}: str-replace($wrapper, var, #{$value});
+            #{$property}: #{str-replace($wrapper, '%var%', #{$value})};
           }
           @else {
             #{$property}: #{$value};
@@ -82,7 +82,7 @@
         @each $breakpoint-key, $breakpoint-value in $breakpoints {
           @include viewport($breakpoint-value, min) {
             @if ($properties) {
-              @include make-options($properties, "-" + $breakpoint-key);
+              @include make-options($properties, '-' + $breakpoint-key);
             }
           }
         }
@@ -148,7 +148,7 @@
         @each $breakpoint-key, $breakpoint-value in $breakpoints {
           @include viewport($breakpoint-value, min) {
             @if ($properties) {
-              @include make-options($properties, "-" + $breakpoint-key);
+              @include make-options($properties, '-' + $breakpoint-key);
             }
           }
         }
@@ -226,7 +226,7 @@
             }
           }
           @if ($properties) {
-            @include make-options($properties, "-" + $breakpoint-key);
+            @include make-options($properties, '-' + $breakpoint-key);
           }
         }
       }

@@ -1,163 +1,163 @@
 $flex-grid: (
-  pack: (
-    name: "pack",
-    map: map-merge((), $breakpoints),
-    responsive: true,
-    properties: (
-      extent: (
-        name: width,
-        values: (
-          narrowest: 20%,
-          narrower: 30%,
-          narrow: 40%,
-          medium: 60%,
-          wide: 80%,
-          wider: 90%,
-          widest: 100%
+  'pack': (
+    'name': 'pack',
+    'map': map-merge((), $breakpoints),
+    'responsive': true,
+    'properties': (
+      'extent': (
+        'name': 'width',
+        'values': (
+          'narrowest': 20%,
+          'narrower': 30%,
+          'narrow': 40%,
+          'medium': 60%,
+          'wide': 80%,
+          'wider': 90%,
+          'widest': 100%
         )
       )
     )
   ),
-  tier: (
-    name: "tier",
-    map: map-merge((), $containers),
-    responsive: true,
-    properties: (
-      content: (
-        name: align-content,
-        values: (
-          start: flex-start,
-          end: flex-end,
-          center: center,
-          stretch: stretch,
-          evenly: space-evenly,
-          between: space-between,
-          around: space-around,
+  'tier': (
+    'name': 'tier',
+    'map': map-merge((), $containers),
+    'responsive': true,
+    'properties': (
+      'content': (
+        'name': 'align-content',
+        'values': (
+          'start': 'flex-start',
+          'end': 'flex-end',
+          'center': 'center',
+          'stretch': 'stretch',
+          'evenly': 'space-evenly',
+          'between': 'space-between',
+          'around': 'space-around'
         )
       ),
-      items: (
-        name: align-items,
-        values: (
-          start: flex-start,
-          end: flex-end,
-          center: center,
-          stretch: stretch,
-          baseline: baseline,
-        ) 
-      ),
-      justify: (
-        name: justify-content,
-        values: (
-          start: flex-start,
-          end: flex-end,
-          center: center,
-          stretch: stretch,
-          evenly: space-evenly,
-          between: space-between,
-          around: space-around,
+      'items': (
+        'name': 'align-items',
+        'values': (
+          'start': 'flex-start',
+          'end': 'flex-end',
+          'center': 'center',
+          'stretch': 'stretch',
+          'baseline': 'baseline'
         )
       ),
-      flow: (
-        name: flex-flow,
-        values: (
-          row-wrap: row wrap,
-          row-reverse-wrap: row-reverse wrap,
-          row-wrap-reverse: row wrap-reverse,
-          row-reverse-wrap-reverse: row-reverse wrap-reverse,
-          row-nowrap: row nowrap,
-          row-reverse-nowrap: row-reverse nowrap,
-          column-wrap: column wrap,
-          column-reverse-wrap: column-reverse wrap,
-          column-wrap-reverse: column wrap-reverse,
-          column-reverse-wrap-reverse: column-reverse wrap-reverse,
-          column-nowrap: column nowrap,
-          column-reverse-nowrap: column-reverse nowrap,
-        )
-      )
-    )
-  ),
-  cell: (
-    name: "cell",
-    map: map-merge((), $cells),
-    responsive: true,
-    properties: (
-      index: (
-        name: order,
-        values: (
-          first: -1,
-          last: 99,
-          0: 0,
-          1: 1,
-          2: 2,
-          3: 3,
-          4: 4,
-          5: 5,
-          6: 6,
-          7: 7,
-          8: 8,
-          9: 9
+      'justify': (
+        'name': 'justify-content',
+        'values': (
+          'start': 'flex-start',
+          'end': 'flex-end',
+          'center': 'center',
+          'stretch': 'stretch',
+          'evenly': 'space-evenly',
+          'between': 'space-between',
+          'around': 'space-around'
         )
       ),
-      push: (
-        name: transform,
-        wrapper: translateX(var),
-        values: percentages(map-merge((), $cells))
-      ),
-      pull: (
-          name: transform,
-          wrapper: translateX(var),
-          values: percentages(map-merge((), $cells), negative)
-      ),
-      drop: (
-        name: transform,
-        wrapper: translateY(var),
-        values: percentages(map-merge((), $cells))
-      ),
-      lift: (
-        name: transform,
-        wrapper: translateY(var),
-        values: percentages(map-merge((), $cells), negative)
-      ),
-      lead: (
-        name: margin-top,
-        values: (
-          0: 0,
-          0\.5: 15px,
-          1: 30px,
-          1\.5: 45px,
-          2: 60px,
-          3: 90px,
-          4: 120px,
-          5: 150px,
-          6: 180px,
-          7: 210px,
-          8: 240px,
-          9: 270px
-        )
-      ),
-      rear: (
-        name: margin-bottom,
-        values: (
-          0: 0,
-          0\.5: 15px,
-          1: 30px, 
-          1\.5: 45px,
-          2: 60px, 
-          3: 90px,
-          4: 120px,
-          5: 150px,
-          6: 180px,
-          7: 210px,
-          8: 240px,
-          9: 270px
+      'flow': (
+        'name': 'flex-flow',
+        'values': (
+          'row-wrap': 'row wrap',
+          'row-reverse-wrap': 'row-reverse wrap',
+          'row-wrap-reverse': 'row wrap-reverse',
+          'row-reverse-wrap-reverse': 'row-reverse wrap-reverse',
+          'row-nowrap': 'row nowrap',
+          'row-reverse-nowrap': 'row-reverse nowrap',
+          'column-wrap': 'column wrap',
+          'column-reverse-wrap': 'column-reverse wrap',
+          'column-wrap-reverse': 'column wrap-reverse',
+          'column-reverse-wrap-reverse': 'column-reverse wrap-reverse',
+          'column-nowrap': 'column nowrap',
+          'column-reverse-nowrap': 'column-reverse nowrap'
         )
       )
     )
   ),
-  gutter: (
-    name: 'gutters',
-    size: 15px,
-    axis: 'x',
+  'cell': (
+    'name': 'cell',
+    'map': map-merge((), $cells),
+    'responsive': true,
+    'properties': (
+      'index': (
+        'name': 'order',
+        'values': (
+          'first': -1,
+          'last': 99,
+          '0': 0,
+          '1': 1,
+          '2': 2,
+          '3': 3,
+          '4': 4,
+          '5': 5,
+          '6': 6,
+          '7': 7,
+          '8': 8,
+          '9': 9
+        )
+      ),
+      'push': (
+        'name': 'transform',
+        'wrapper':  'translateY(%var%)',
+        'values': percentages(map-merge((), $cells))
+      ),
+      'pull': (
+        'name': 'transform',
+        'wrapper': 'translateX(%var%)',
+        'values': percentages(map-merge((), $cells), negative)
+      ),
+      'drop': (
+        'name': 'transform',
+        'wrapper': 'translateY(%var%)',
+        'values': percentages(map-merge((), $cells))
+      ),
+      'lift': (
+        'name': 'transform',
+        'wrapper':  'translateY(%var%)',
+        'values': percentages(map-merge((), $cells), negative)
+      ),
+      'lead': (
+        'name': 'margin-top',
+        'values': (
+          '0': 0,
+          '0\\.5': 15px,
+          '1': 30px,
+          '1\\.5': 45px,
+          '2': 60px,
+          '3': 90px,
+          '4': 120px,
+          '5': 150px,
+          '6': 180px,
+          '7': 210px,
+          '8': 240px,
+          '9': 270px
+        )
+      ),
+      'rear': (
+        'name': 'margin-bottom',
+        'values': (
+          '0': 0,
+          '0\\.5': 15px,
+          '1': 30px,
+          '1\\.5': 45px,
+          '2': 60px,
+          '3': 90px,
+          '4': 120px,
+          '5': 150px,
+          '6': 180px,
+          '7': 210px,
+          '8': 240px,
+          '9': 270px
+        )
+      )
+    )
+  ),
+  'gutter': (
+    'name': 'gutters',
+    'size': 15px,
+    'axis': 'x' // x, y, both
   )
 );
 
