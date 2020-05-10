@@ -69,7 +69,7 @@
     @extend %pack;
     @if (is-type('map', $breakpoints)) {
       @each $breakpoint-key, $value in $breakpoints {
-        @include viewport($value, min) {
+        @include viewport($value, 'min') {
           max-width: map-get($containers, $breakpoint-key);
         }
       }
@@ -80,7 +80,7 @@
     @if ($responsive) {
       @if (is-type('map', $breakpoints)) {
         @each $breakpoint-key, $breakpoint-value in $breakpoints {
-          @include viewport($breakpoint-value, min) {
+          @include viewport($breakpoint-value, 'min') {
             @if ($properties) {
               @include make-options($properties, '-' + $breakpoint-key);
             }
@@ -146,7 +146,7 @@
     @if ($responsive) {
       @if (is-type('map', $breakpoints)) {
         @each $breakpoint-key, $breakpoint-value in $breakpoints {
-          @include viewport($breakpoint-value, min) {
+          @include viewport($breakpoint-value, 'min') {
             @if ($properties) {
               @include make-options($properties, '-' + $breakpoint-key);
             }
@@ -207,7 +207,7 @@
   @if ($responsive) {
     @if (is-type('map', $breakpoints)) {
       @each $breakpoint-key, $breakpoint-value in $breakpoints {
-        @include viewport($breakpoint-value, min) {
+        @include viewport($breakpoint-value, 'min') {
           .#{$cell-name}-#{$breakpoint-key}\:auto {
             flex: 0 0 auto;
           }

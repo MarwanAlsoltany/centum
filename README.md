@@ -282,18 +282,18 @@ $flex-grid: (
 | --- | --- | --- |
 | Pack | `pack:{type?}` <br/> `{p-option}-{breakpoint?}:{value}` | `pack` <br/> `pack:no-gutters` <br/> `extent-xl:medium` <br/> `extent:wide` |
 | Tier | `tier:{type?}` <br/> `{t-option}-{breakpoint?}:{value}` | `tier` <br/> `tier:no-gutters` <br/> `justify-md:between` <br/> `justify:center` |
-| Cell | `cell-{breakpoint?}:{percentage}` <br/> `{c-option}-{breakpoint?}:{percentage|number|word}` | `cell` <br/> `cell-md:25` <br/> `lead-xs:3` <br/> `rear:1` |
+| Cell | `cell-{breakpoint?}:{percentage}` <br/> ```{c-option}-{breakpoint?}:{percentage|number|word}``` | `cell` <br/> `cell-md:25` <br/> `lead-xs:3` <br/> `rear:1` |
 
 #### Variables mappings
 
 | Variable | Possible Values |
 | --- | --- |
-| `{breakpoint}` | `xs`, `sm`, `md`, `lg`, `xl` *<small>(576px, 768px, 992px, 1280px, 1600px, no breakpoint = mobile)</small>* |
+| `{breakpoint}` | `xs`, `sm`, `md`, `lg`, `xl` <small>*(576px, 768px, 992px, 1280px, 1600px, no breakpoint = mobile)*</small> |
 | `{type}` | `no-gutters` |
 | `{p-option}` | `extent` |
-| `{p-value}` | `narrow`, `medium`, `wider` *<small>(refer to `$flex-grid` for the full list)</small>* |
+| `{p-value}` | `narrow`, `medium`, `wider` <small>*(refer to `$flex-grid` for the full list)*</small> |
 | `{t-option}` | `content`, `items`, `justify`, `flow` |
-| `{t-value}` | `start`, `stretch`, `between`, `row-nowrap` *<small>(refer to `$flex-grid` for the full list)</small>* |
+| `{t-value}` | `start`, `stretch`, `between`, `row-nowrap` <small>*(refer to `$flex-grid` for the full list)*</small> |
 | `{c-option}` | `index`, `push`, `pull`, `drop`, `lift`, `lead`, `rear` |
 | `{percentage}` | `0`, `5`, `0`, `15`, `16`, `20`, `25`, `30`, `33`, `35`, `40`, `45`, `48`, `50`, `55`, `60`, `65`, `66`, `70`, `75`, `80`, `85`, `90`, `95`, `100` |
 | `{number}` | `0.5`, `1`, `1.5`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9` |
@@ -371,7 +371,7 @@ $flex-grid: (
 
 
 ## Configuration
-The nice thing about Centum is when you do not like the implementation or behavior of a specific class, you can easily swap it just by changing the property (`name`) passed in the map, for example, the `push` option under `cell` → `properties` uses `transform` to translate the cell to another position. You can simply change it to `margin-left` for example and omit the extra `wrapper` line to make it use `margin-left: 10%;` instead of `transform: translateX(10%);` etc ...
+The nicest thing about Centum is when you do not like the implementation or behavior of a specific class, you can easily swap it just by changing the property (`name`) passed in the map, for example, the `push` option under `cell` → `properties` uses `transform` to translate the cell to another position. You can simply change it to `margin-left` for example and omit the extra `wrapper` line to make it use `margin-left: 10%;` instead of `transform: translateX(10%);` etc ...
 
 Any unused breakpoints and options can be commented out before the final compilation, this results in a massive decrease in file size.
 
@@ -403,12 +403,57 @@ $flex-grid: (
 );
 ```
 
+#### Extra Features
+
+Centum is shipped with some neat SCSS mixins and function, few to mention:
+
+* Mixins
+
+```scss
+@include viewport($breakpoint: 'md', $type: 'max', $dimension: 'width') {
+  // here comes your css for this breakpoint
+}
+
+@include make-options(
+  $properties: (
+    'bg': (
+      'name': 'background-color',
+      'values': (
+        'red': #FF0000,
+        'green': #00FF00
+      )
+    )
+  ),
+  $infix: '-basic'
+);
+/* 
+.bg-basic:red {
+  background-color: #FF0000;
+}
+.bg-basic:green {
+  background-color: #00FF00;
+} 
+*/
+```
+
+* Functions
+
+```scss
+str-replace($string, $search, $replace);
+strip-unit($number)
+percentages($map-or-list, $negative);
+```
+
+> <small>See [mixins](./sass/abstracts/_functions.scss), [functions](./sass/abstracts/_functions.scss).</small>
+
+
 ---
 
 
 ## Links
 * [centum@1.0.0.css](https://raw.githubusercontent.com/MarwanAlsoltany/centum/master/centum@1.0.0.css)
 * [centum@1.0.0.min.css](https://raw.githubusercontent.com/MarwanAlsoltany/centum/master/centum@1.0.0.min.css)
+
 
 ---
 
