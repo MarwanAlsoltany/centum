@@ -31,6 +31,8 @@ Also, the 100-based grid system is easier for humans to grasp offers the possibi
 
 Centum in simple words is just a big SCSS map. It all depends on your requirements, they define how big or small this map can be. The following example is an example that pushes a CSS Flex Grid System to its absolute limits. That's why it's worth noting that it's really rare that you will encounter a project that can utilize the defined grid bellow.
 
+<small>![#ff6347](https://via.placeholder.com/10/f03c15/000000?text=+) **Note:** *Centum requires full understanding of CSS Flex-Box in order to fully utilize it.*</small>
+
 1. **Breakpoints definition**
 
 ```scss
@@ -256,7 +258,7 @@ $flex-grid: (
   'gutter': (
     'name': 'gutters',
     'size': 15px,
-    'axis': 'x' // x, y, both
+    'axis': 'x' // x, y, any other value will be translated to both
   )
 );
 ```
@@ -361,6 +363,30 @@ $flex-grid: (
       Here comes your content
     </div>
     <div class="cell:20">
+      Here comes your content
+    </div>
+  </div>
+</div>
+```
+
+* **A container on all devices containing one 50% column in the dead center of the container**
+
+```html
+<div class="pack">
+  <div class="tier justify:center content:center" style="height:500px">
+    <div class="cell:50">
+      Here comes your content
+    </div>
+  </div>
+</div>
+```
+
+* **A container on large desktops containing two 30% columns pushed to the sides**
+
+```html
+<div class="pack">
+  <div class="tier justify-xl:between">
+    <div class="cell:100 cell-xl:50">
       Here comes your content
     </div>
   </div>
