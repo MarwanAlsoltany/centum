@@ -470,7 +470,7 @@ strip-unit($number)
 percentages($map-or-list, $negative);
 ```
 
-> <small>See [mixins](./sass/abstracts/_functions.scss), [functions](./sass/abstracts/_functions.scss).</small>
+> <small>See [mixins](./sass/abstracts/_mixins.scss), [functions](./sass/abstracts/_functions.scss).</small>
 
 
 ---
