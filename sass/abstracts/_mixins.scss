@@ -1,3 +1,8 @@
+//
+// @param {string} $breakpoint
+// @param {string} $type
+// @param {string} $dimension
+//
 @mixin viewport($breakpoint: 'md', $type: 'max', $dimension: 'width') {
   @if ($media-queries) {
     $property: null;
@@ -10,11 +15,10 @@
     }
     @if map-has-key($media-breakpoints, #{$breakpoint}) {
       $value: map-get($media-breakpoints, #{$breakpoint});
-    } 
+    }
     @else {
       $value: $breakpoint;
     }
-    
     $query: $property + if(str-index('' + $value, 'px'), ($value - 0.02), $value);
     @media only screen and (#{$query}) {
       @content;
@@ -22,10 +26,14 @@
   }
 }
 
-@mixin make-options($properties, $infix: '') {
-  @if (is-type('map', $properties)) {
-    @each $property-alias, $property-map in $properties {
-      $property: map-get($property-map, 'name');
+//
+// @param {map} $options
+// @param {string} $infix
+//
+@mixin make-options($options, $infix: '') {
+  @if (is-type('map', $options)) {
+    @each $property-alias, $property-map in $options {
+      $property: map-get($property-map, 'property');
       $wrapper: map-get($property-map, 'wrapper');
       @each $value-alias, $value in map-get($property-map, 'values') {
         .#{$property-alias + $infix}\:#{$value-alias} {
@@ -41,6 +49,9 @@
   }
 }
 
+//
+// @param {map} $flex-grid
+//
 @mixin make-flex-grid-pack($flex-grid) {
   $pack-name: map-get(map-get($flex-grid, 'pack'), 'name');
   $breakpoints: map-get(map-get($flex-grid, 'pack'), 'map');
@@ -48,7 +59,7 @@
   $gutter-size: map-get(map-get($flex-grid, 'gutter'), 'size');
   $gutter-axis: map-get(map-get($flex-grid, 'gutter'), 'axis');
   $responsive: map-get(map-get($flex-grid, 'pack'), 'responsive');
-  $properties: map-get(map-get($flex-grid, 'pack'), 'properties');
+  $options: map-get(map-get($flex-grid, 'pack'), 'options');
 
   %pack {
     @if (is-type('number', $gutter-size)) {
@@ -75,14 +86,14 @@
       }
     }
   }
-  @if ($properties) {
-    @include make-options($properties);
+  @if ($options) {
+    @include make-options($options);
     @if ($responsive) {
       @if (is-type('map', $breakpoints)) {
         @each $breakpoint-key, $breakpoint-value in $breakpoints {
           @include viewport($breakpoint-value, 'min') {
-            @if ($properties) {
-              @include make-options($properties, '-' + $breakpoint-key);
+            @if ($options) {
+              @include make-options($options, '-' + $breakpoint-key);
             }
           }
         }
@@ -91,6 +102,9 @@
   }
 }
 
+//
+// @param {map} $flex-grid
+//
 @mixin make-flex-grid-tier($flex-grid) {
   $tier-name: map-get(map-get($flex-grid, 'tier'), 'name');
   $breakpoints: map-get(map-get($flex-grid, 'pack'), 'map');
@@ -99,7 +113,7 @@
   $gutter-size: map-get(map-get($flex-grid, 'gutter'), 'size');
   $gutter-axis: map-get(map-get($flex-grid, 'gutter'), 'axis');
   $responsive: map-get(map-get($flex-grid, 'tier'), 'responsive');
-  $properties: map-get(map-get($flex-grid, 'tier'), 'properties');
+  $options: map-get(map-get($flex-grid, 'tier'), 'options');
 
   %tier {
     @if (is-type('number', $gutter-size)) {
@@ -141,14 +155,14 @@
       margin-#{if($gutter-axis == 'y', 'right', 'bottom')}: 0;
     }
   }
-  @if ($properties) {
-    @include make-options($properties);
+  @if ($options) {
+    @include make-options($options);
     @if ($responsive) {
       @if (is-type('map', $breakpoints)) {
         @each $breakpoint-key, $breakpoint-value in $breakpoints {
           @include viewport($breakpoint-value, 'min') {
-            @if ($properties) {
-              @include make-options($properties, '-' + $breakpoint-key);
+            @if ($options) {
+              @include make-options($options, '-' + $breakpoint-key);
             }
           }
         }
@@ -157,6 +171,9 @@
   }
 }
 
+//
+// @param {map} $flex-grid
+//
 @mixin make-flex-grid-cell($flex-grid) {
   $cell-name: map-get(map-get($flex-grid, 'cell'), 'name');
   $breakpoints: map-get(map-get($flex-grid, 'pack'), 'map');
@@ -164,7 +181,7 @@
   $gutter-size: map-get(map-get($flex-grid, 'gutter'), 'size');
   $gutter-axis: map-get(map-get($flex-grid, 'gutter'), 'axis');
   $responsive: map-get(map-get($flex-grid, 'cell'), 'responsive');
-  $properties: map-get(map-get($flex-grid, 'cell'), 'properties');
+  $options: map-get(map-get($flex-grid, 'cell'), 'options');
 
   %cell {
     @if (is-type('number', $gutter-size)) {
@@ -201,8 +218,8 @@
       }
     }
   }
-  @if ($properties) {
-    @include make-options($properties);
+  @if ($options) {
+    @include make-options($options);
   }
   @if ($responsive) {
     @if (is-type('map', $breakpoints)) {
@@ -223,10 +240,16 @@
                   max-width: floor(percentage($member-value));
                 }
               }
+              .#{$cell-name}-#{$breakpoint-key}\:ceil {
+                &.#{$cell-name}-#{$breakpoint-key}\:#{$member-key} {
+                  flex: 0 0 ceil(percentage($member-value));
+                  max-width: ceil(percentage($member-value));
+                }
+              }
             }
           }
-          @if ($properties) {
-            @include make-options($properties, '-' + $breakpoint-key);
+          @if ($options) {
+            @include make-options($options, '-' + $breakpoint-key);
           }
         }
       }
@@ -248,7 +271,11 @@
   }
 }
 
-
+//
+// @param {string} $property
+// @param {string} $value
+// @param {list} $prefixes
+//
 @mixin prefix($property, $value, $prefixes) {
   @each $prefix in $prefixes {
     -#{$prefix}-#{$property}: $value;
@@ -256,6 +283,10 @@
   #{$property}: $value;
 }
 
+//
+// @param {string} $property
+// @param {string} $value
+//
 @mixin vendorize($property, $value) {
-  @include prefix($property, $value, (webkit, moz, ms, o));
+  @include prefix($property, $value, ('webkit', 'moz', 'ms', 'o'));
 }

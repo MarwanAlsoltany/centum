@@ -3,9 +3,9 @@ $flex-grid: (
     'name': 'pack',
     'map': map-merge((), $breakpoints),
     'responsive': true,
-    'properties': (
+    'options': (
       'extent': (
-        'name': 'width',
+        'property': 'width',
         'values': (
           'narrowest': 20%,
           'narrower': 30%,
@@ -22,9 +22,9 @@ $flex-grid: (
     'name': 'tier',
     'map': map-merge((), $containers),
     'responsive': true,
-    'properties': (
+    'options': (
       'content': (
-        'name': 'align-content',
+        'property': 'align-content',
         'values': (
           'start': 'flex-start',
           'end': 'flex-end',
@@ -36,7 +36,7 @@ $flex-grid: (
         )
       ),
       'items': (
-        'name': 'align-items',
+        'property': 'align-items',
         'values': (
           'start': 'flex-start',
           'end': 'flex-end',
@@ -46,7 +46,7 @@ $flex-grid: (
         )
       ),
       'justify': (
-        'name': 'justify-content',
+        'property': 'justify-content',
         'values': (
           'start': 'flex-start',
           'end': 'flex-end',
@@ -58,7 +58,7 @@ $flex-grid: (
         )
       ),
       'flow': (
-        'name': 'flex-flow',
+        'property': 'flex-flow',
         'values': (
           'row-wrap': 'row wrap',
           'row-reverse-wrap': 'row-reverse wrap',
@@ -80,9 +80,9 @@ $flex-grid: (
     'name': 'cell',
     'map': map-merge((), $cells),
     'responsive': true,
-    'properties': (
+    'options': (
       'index': (
-        'name': 'order',
+        'property': 'order',
         'values': (
           'first': -1,
           'last': 99,
@@ -99,27 +99,27 @@ $flex-grid: (
         )
       ),
       'push': (
-        'name': 'transform',
-        'wrapper':  'translateY(%var%)',
-        'values': percentages(map-merge((), $cells))
+        'property': 'transform',
+        'wrapper': 'translateX(%var%)',
+        'values': percentages(map-merge((), $cells), false)
       ),
       'pull': (
-        'name': 'transform',
+        'property': 'transform',
         'wrapper': 'translateX(%var%)',
-        'values': percentages(map-merge((), $cells), negative)
+        'values': percentages(map-merge((), $cells), true)
       ),
       'drop': (
-        'name': 'transform',
+        'property': 'transform',
         'wrapper': 'translateY(%var%)',
-        'values': percentages(map-merge((), $cells))
+        'values': percentages(map-merge((), $cells), false)
       ),
       'lift': (
-        'name': 'transform',
-        'wrapper':  'translateY(%var%)',
-        'values': percentages(map-merge((), $cells), negative)
+        'property': 'transform',
+        'wrapper': 'translateY(%var%)',
+        'values': percentages(map-merge((), $cells), true)
       ),
       'lead': (
-        'name': 'margin-top',
+        'property': 'margin-top',
         'values': (
           '0': 0,
           '0\\.5': 15px,
@@ -136,7 +136,7 @@ $flex-grid: (
         )
       ),
       'rear': (
-        'name': 'margin-bottom',
+        'property': 'margin-bottom',
         'values': (
           '0': 0,
           '0\\.5': 15px,
@@ -157,7 +157,7 @@ $flex-grid: (
   'gutter': (
     'name': 'gutters',
     'size': 15px,
-    'axis': 'x' // x, y, both
+    'axis': 'x' // x, y, any other value will be translated to both
   )
 );
 

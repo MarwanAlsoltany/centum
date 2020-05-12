@@ -1,4 +1,4 @@
-/*! 
+/*!
  * @name            Centum
  * @version         1.0.0
  * @author          Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
@@ -26,6 +26,7 @@
   flex-shrink: 0;
   flex-basis: 0;
   width: auto;
+  height: auto;
   margin-left: 0;
   margin-right: 0;
   position: relative;
@@ -1189,103 +1190,103 @@
 }
 
 .push\:0 {
-  transform: translateY(0%);
+  transform: translateX(0%);
 }
 
 .push\:5 {
-  transform: translateY(5%);
+  transform: translateX(5%);
 }
 
 .push\:10 {
-  transform: translateY(10%);
+  transform: translateX(10%);
 }
 
 .push\:15 {
-  transform: translateY(15%);
+  transform: translateX(15%);
 }
 
 .push\:16 {
-  transform: translateY(16%);
+  transform: translateX(16%);
 }
 
 .push\:20 {
-  transform: translateY(20%);
+  transform: translateX(20%);
 }
 
 .push\:25 {
-  transform: translateY(25%);
+  transform: translateX(25%);
 }
 
 .push\:30 {
-  transform: translateY(30%);
+  transform: translateX(30%);
 }
 
 .push\:33 {
-  transform: translateY(33.3333333333%);
+  transform: translateX(33.3333333333%);
 }
 
 .push\:35 {
-  transform: translateY(35%);
+  transform: translateX(35%);
 }
 
 .push\:40 {
-  transform: translateY(40%);
+  transform: translateX(40%);
 }
 
 .push\:45 {
-  transform: translateY(45%);
+  transform: translateX(45%);
 }
 
 .push\:48 {
-  transform: translateY(48%);
+  transform: translateX(48%);
 }
 
 .push\:50 {
-  transform: translateY(50%);
+  transform: translateX(50%);
 }
 
 .push\:55 {
-  transform: translateY(55%);
+  transform: translateX(55%);
 }
 
 .push\:60 {
-  transform: translateY(60%);
+  transform: translateX(60%);
 }
 
 .push\:65 {
-  transform: translateY(65%);
+  transform: translateX(65%);
 }
 
 .push\:66 {
-  transform: translateY(66.6666666667%);
+  transform: translateX(66.6666666667%);
 }
 
 .push\:70 {
-  transform: translateY(70%);
+  transform: translateX(70%);
 }
 
 .push\:75 {
-  transform: translateY(75%);
+  transform: translateX(75%);
 }
 
 .push\:80 {
-  transform: translateY(80%);
+  transform: translateX(80%);
 }
 
 .push\:85 {
-  transform: translateY(85%);
+  transform: translateX(85%);
 }
 
 .push\:90 {
-  transform: translateY(90%);
+  transform: translateX(90%);
 }
 
 .push\:95 {
-  transform: translateY(95%);
+  transform: translateX(95%);
 }
 
 .push\:100 {
-  transform: translateY(100%);
+  transform: translateX(100%);
 }
 
 .pull\:0 {
@@ -1739,6 +1740,11 @@
     max-width: 33%;
   }
 
+  .cell-xs\:ceil.cell-xs\:33 {
+    flex: 0 0 34%;
+    max-width: 34%;
+  }
+
   .cell-xs\:35 {
     flex: 0 0 35%;
     max-width: 35%;
@@ -1787,6 +1793,11 @@
   .cell-xs\:floor.cell-xs\:66 {
     flex: 0 0 66%;
     max-width: 66%;
+  }
+
+  .cell-xs\:ceil.cell-xs\:66 {
+    flex: 0 0 67%;
+    max-width: 67%;
   }
 
   .cell-xs\:70 {
@@ -1873,103 +1884,103 @@
   }
 
   .push-xs\:0 {
-    transform: translateY(0%);
+    transform: translateX(0%);
   }
 
   .push-xs\:5 {
-    transform: translateY(5%);
+    transform: translateX(5%);
   }
 
   .push-xs\:10 {
-    transform: translateY(10%);
+    transform: translateX(10%);
   }
 
   .push-xs\:15 {
-    transform: translateY(15%);
+    transform: translateX(15%);
   }
 
   .push-xs\:16 {
-    transform: translateY(16%);
+    transform: translateX(16%);
   }
 
   .push-xs\:20 {
-    transform: translateY(20%);
+    transform: translateX(20%);
   }
 
   .push-xs\:25 {
-    transform: translateY(25%);
+    transform: translateX(25%);
   }
 
   .push-xs\:30 {
-    transform: translateY(30%);
+    transform: translateX(30%);
   }
 
   .push-xs\:33 {
-    transform: translateY(33.3333333333%);
+    transform: translateX(33.3333333333%);
   }
 
   .push-xs\:35 {
-    transform: translateY(35%);
+    transform: translateX(35%);
   }
 
   .push-xs\:40 {
-    transform: translateY(40%);
+    transform: translateX(40%);
   }
 
   .push-xs\:45 {
-    transform: translateY(45%);
+    transform: translateX(45%);
   }
 
   .push-xs\:48 {
-    transform: translateY(48%);
+    transform: translateX(48%);
   }
 
   .push-xs\:50 {
-    transform: translateY(50%);
+    transform: translateX(50%);
   }
 
   .push-xs\:55 {
-    transform: translateY(55%);
+    transform: translateX(55%);
   }
 
   .push-xs\:60 {
-    transform: translateY(60%);
+    transform: translateX(60%);
   }
 
   .push-xs\:65 {
-    transform: translateY(65%);
+    transform: translateX(65%);
   }
 
   .push-xs\:66 {
-    transform: translateY(66.6666666667%);
+    transform: translateX(66.6666666667%);
   }
 
   .push-xs\:70 {
-    transform: translateY(70%);
+    transform: translateX(70%);
   }
 
   .push-xs\:75 {
-    transform: translateY(75%);
+    transform: translateX(75%);
   }
 
   .push-xs\:80 {
-    transform: translateY(80%);
+    transform: translateX(80%);
   }
 
   .push-xs\:85 {
-    transform: translateY(85%);
+    transform: translateX(85%);
   }
 
   .push-xs\:90 {
-    transform: translateY(90%);
+    transform: translateX(90%);
   }
 
   .push-xs\:95 {
-    transform: translateY(95%);
+    transform: translateX(95%);
   }
 
   .push-xs\:100 {
-    transform: translateY(100%);
+    transform: translateX(100%);
   }
 
   .pull-xs\:0 {
@@ -2423,6 +2434,11 @@
     max-width: 33%;
   }
 
+  .cell-sm\:ceil.cell-sm\:33 {
+    flex: 0 0 34%;
+    max-width: 34%;
+  }
+
   .cell-sm\:35 {
     flex: 0 0 35%;
     max-width: 35%;
@@ -2471,6 +2487,11 @@
   .cell-sm\:floor.cell-sm\:66 {
     flex: 0 0 66%;
     max-width: 66%;
+  }
+
+  .cell-sm\:ceil.cell-sm\:66 {
+    flex: 0 0 67%;
+    max-width: 67%;
   }
 
   .cell-sm\:70 {
@@ -2557,103 +2578,103 @@
   }
 
   .push-sm\:0 {
-    transform: translateY(0%);
+    transform: translateX(0%);
   }
 
   .push-sm\:5 {
-    transform: translateY(5%);
+    transform: translateX(5%);
   }
 
   .push-sm\:10 {
-    transform: translateY(10%);
+    transform: translateX(10%);
   }
 
   .push-sm\:15 {
-    transform: translateY(15%);
+    transform: translateX(15%);
   }
 
   .push-sm\:16 {
-    transform: translateY(16%);
+    transform: translateX(16%);
   }
 
   .push-sm\:20 {
-    transform: translateY(20%);
+    transform: translateX(20%);
   }
 
   .push-sm\:25 {
-    transform: translateY(25%);
+    transform: translateX(25%);
   }
 
   .push-sm\:30 {
-    transform: translateY(30%);
+    transform: translateX(30%);
   }
 
   .push-sm\:33 {
-    transform: translateY(33.3333333333%);
+    transform: translateX(33.3333333333%);
   }
 
   .push-sm\:35 {
-    transform: translateY(35%);
+    transform: translateX(35%);
   }
 
   .push-sm\:40 {
-    transform: translateY(40%);
+    transform: translateX(40%);
   }
 
   .push-sm\:45 {
-    transform: translateY(45%);
+    transform: translateX(45%);
   }
 
   .push-sm\:48 {
-    transform: translateY(48%);
+    transform: translateX(48%);
   }
 
   .push-sm\:50 {
-    transform: translateY(50%);
+    transform: translateX(50%);
   }
 
   .push-sm\:55 {
-    transform: translateY(55%);
+    transform: translateX(55%);
   }
 
   .push-sm\:60 {
-    transform: translateY(60%);
+    transform: translateX(60%);
   }
 
   .push-sm\:65 {
-    transform: translateY(65%);
+    transform: translateX(65%);
   }
 
   .push-sm\:66 {
-    transform: translateY(66.6666666667%);
+    transform: translateX(66.6666666667%);
   }
 
   .push-sm\:70 {
-    transform: translateY(70%);
+    transform: translateX(70%);
   }
 
   .push-sm\:75 {
-    transform: translateY(75%);
+    transform: translateX(75%);
   }
 
   .push-sm\:80 {
-    transform: translateY(80%);
+    transform: translateX(80%);
   }
 
   .push-sm\:85 {
-    transform: translateY(85%);
+    transform: translateX(85%);
   }
 
   .push-sm\:90 {
-    transform: translateY(90%);
+    transform: translateX(90%);
   }
 
   .push-sm\:95 {
-    transform: translateY(95%);
+    transform: translateX(95%);
   }
 
   .push-sm\:100 {
-    transform: translateY(100%);
+    transform: translateX(100%);
   }
 
   .pull-sm\:0 {
@@ -3107,6 +3128,11 @@
     max-width: 33%;
   }
 
+  .cell-md\:ceil.cell-md\:33 {
+    flex: 0 0 34%;
+    max-width: 34%;
+  }
+
   .cell-md\:35 {
     flex: 0 0 35%;
     max-width: 35%;
@@ -3155,6 +3181,11 @@
   .cell-md\:floor.cell-md\:66 {
     flex: 0 0 66%;
     max-width: 66%;
+  }
+
+  .cell-md\:ceil.cell-md\:66 {
+    flex: 0 0 67%;
+    max-width: 67%;
   }
 
   .cell-md\:70 {
@@ -3241,103 +3272,103 @@
   }
 
   .push-md\:0 {
-    transform: translateY(0%);
+    transform: translateX(0%);
   }
 
   .push-md\:5 {
-    transform: translateY(5%);
+    transform: translateX(5%);
   }
 
   .push-md\:10 {
-    transform: translateY(10%);
+    transform: translateX(10%);
   }
 
   .push-md\:15 {
-    transform: translateY(15%);
+    transform: translateX(15%);
   }
 
   .push-md\:16 {
-    transform: translateY(16%);
+    transform: translateX(16%);
   }
 
   .push-md\:20 {
-    transform: translateY(20%);
+    transform: translateX(20%);
   }
 
   .push-md\:25 {
-    transform: translateY(25%);
+    transform: translateX(25%);
   }
 
   .push-md\:30 {
-    transform: translateY(30%);
+    transform: translateX(30%);
   }
 
   .push-md\:33 {
-    transform: translateY(33.3333333333%);
+    transform: translateX(33.3333333333%);
   }
 
   .push-md\:35 {
-    transform: translateY(35%);
+    transform: translateX(35%);
   }
 
   .push-md\:40 {
-    transform: translateY(40%);
+    transform: translateX(40%);
   }
 
   .push-md\:45 {
-    transform: translateY(45%);
+    transform: translateX(45%);
   }
 
   .push-md\:48 {
-    transform: translateY(48%);
+    transform: translateX(48%);
   }
 
   .push-md\:50 {
-    transform: translateY(50%);
+    transform: translateX(50%);
   }
 
   .push-md\:55 {
-    transform: translateY(55%);
+    transform: translateX(55%);
   }
 
   .push-md\:60 {
-    transform: translateY(60%);
+    transform: translateX(60%);
   }
 
   .push-md\:65 {
-    transform: translateY(65%);
+    transform: translateX(65%);
   }
 
   .push-md\:66 {
-    transform: translateY(66.6666666667%);
+    transform: translateX(66.6666666667%);
   }
 
   .push-md\:70 {
-    transform: translateY(70%);
+    transform: translateX(70%);
   }
 
   .push-md\:75 {
-    transform: translateY(75%);
+    transform: translateX(75%);
   }
 
   .push-md\:80 {
-    transform: translateY(80%);
+    transform: translateX(80%);
   }
 
   .push-md\:85 {
-    transform: translateY(85%);
+    transform: translateX(85%);
   }
 
   .push-md\:90 {
-    transform: translateY(90%);
+    transform: translateX(90%);
   }
 
   .push-md\:95 {
-    transform: translateY(95%);
+    transform: translateX(95%);
   }
 
   .push-md\:100 {
-    transform: translateY(100%);
+    transform: translateX(100%);
   }
 
   .pull-md\:0 {
@@ -3791,6 +3822,11 @@
     max-width: 33%;
   }
 
+  .cell-lg\:ceil.cell-lg\:33 {
+    flex: 0 0 34%;
+    max-width: 34%;
+  }
+
   .cell-lg\:35 {
     flex: 0 0 35%;
     max-width: 35%;
@@ -3839,6 +3875,11 @@
   .cell-lg\:floor.cell-lg\:66 {
     flex: 0 0 66%;
     max-width: 66%;
+  }
+
+  .cell-lg\:ceil.cell-lg\:66 {
+    flex: 0 0 67%;
+    max-width: 67%;
   }
 
   .cell-lg\:70 {
@@ -3925,103 +3966,103 @@
   }
 
   .push-lg\:0 {
-    transform: translateY(0%);
+    transform: translateX(0%);
   }
 
   .push-lg\:5 {
-    transform: translateY(5%);
+    transform: translateX(5%);
   }
 
   .push-lg\:10 {
-    transform: translateY(10%);
+    transform: translateX(10%);
   }
 
   .push-lg\:15 {
-    transform: translateY(15%);
+    transform: translateX(15%);
   }
 
   .push-lg\:16 {
-    transform: translateY(16%);
+    transform: translateX(16%);
   }
 
   .push-lg\:20 {
-    transform: translateY(20%);
+    transform: translateX(20%);
   }
 
   .push-lg\:25 {
-    transform: translateY(25%);
+    transform: translateX(25%);
   }
 
   .push-lg\:30 {
-    transform: translateY(30%);
+    transform: translateX(30%);
   }
 
   .push-lg\:33 {
-    transform: translateY(33.3333333333%);
+    transform: translateX(33.3333333333%);
   }
 
   .push-lg\:35 {
-    transform: translateY(35%);
+    transform: translateX(35%);
   }
 
   .push-lg\:40 {
-    transform: translateY(40%);
+    transform: translateX(40%);
   }
 
   .push-lg\:45 {
-    transform: translateY(45%);
+    transform: translateX(45%);
   }
 
   .push-lg\:48 {
-    transform: translateY(48%);
+    transform: translateX(48%);
   }
 
   .push-lg\:50 {
-    transform: translateY(50%);
+    transform: translateX(50%);
   }
 
   .push-lg\:55 {
-    transform: translateY(55%);
+    transform: translateX(55%);
   }
 
   .push-lg\:60 {
-    transform: translateY(60%);
+    transform: translateX(60%);
   }
 
   .push-lg\:65 {
-    transform: translateY(65%);
+    transform: translateX(65%);
   }
 
   .push-lg\:66 {
-    transform: translateY(66.6666666667%);
+    transform: translateX(66.6666666667%);
   }
 
   .push-lg\:70 {
-    transform: translateY(70%);
+    transform: translateX(70%);
   }
 
   .push-lg\:75 {
-    transform: translateY(75%);
+    transform: translateX(75%);
   }
 
   .push-lg\:80 {
-    transform: translateY(80%);
+    transform: translateX(80%);
   }
 
   .push-lg\:85 {
-    transform: translateY(85%);
+    transform: translateX(85%);
   }
 
   .push-lg\:90 {
-    transform: translateY(90%);
+    transform: translateX(90%);
   }
 
   .push-lg\:95 {
-    transform: translateY(95%);
+    transform: translateX(95%);
   }
 
   .push-lg\:100 {
-    transform: translateY(100%);
+    transform: translateX(100%);
   }
 
   .pull-lg\:0 {
@@ -4475,6 +4516,11 @@
     max-width: 33%;
   }
 
+  .cell-xl\:ceil.cell-xl\:33 {
+    flex: 0 0 34%;
+    max-width: 34%;
+  }
+
   .cell-xl\:35 {
     flex: 0 0 35%;
     max-width: 35%;
@@ -4523,6 +4569,11 @@
   .cell-xl\:floor.cell-xl\:66 {
     flex: 0 0 66%;
     max-width: 66%;
+  }
+
+  .cell-xl\:ceil.cell-xl\:66 {
+    flex: 0 0 67%;
+    max-width: 67%;
   }
 
   .cell-xl\:70 {
@@ -4609,103 +4660,103 @@
   }
 
   .push-xl\:0 {
-    transform: translateY(0%);
+    transform: translateX(0%);
   }
 
   .push-xl\:5 {
-    transform: translateY(5%);
+    transform: translateX(5%);
   }
 
   .push-xl\:10 {
-    transform: translateY(10%);
+    transform: translateX(10%);
   }
 
   .push-xl\:15 {
-    transform: translateY(15%);
+    transform: translateX(15%);
   }
 
   .push-xl\:16 {
-    transform: translateY(16%);
+    transform: translateX(16%);
   }
 
   .push-xl\:20 {
-    transform: translateY(20%);
+    transform: translateX(20%);
   }
 
   .push-xl\:25 {
-    transform: translateY(25%);
+    transform: translateX(25%);
   }
 
   .push-xl\:30 {
-    transform: translateY(30%);
+    transform: translateX(30%);
   }
 
   .push-xl\:33 {
-    transform: translateY(33.3333333333%);
+    transform: translateX(33.3333333333%);
   }
 
   .push-xl\:35 {
-    transform: translateY(35%);
+    transform: translateX(35%);
   }
 
   .push-xl\:40 {
-    transform: translateY(40%);
+    transform: translateX(40%);
   }
 
   .push-xl\:45 {
-    transform: translateY(45%);
+    transform: translateX(45%);
   }
 
   .push-xl\:48 {
-    transform: translateY(48%);
+    transform: translateX(48%);
   }
 
   .push-xl\:50 {
-    transform: translateY(50%);
+    transform: translateX(50%);
   }
 
   .push-xl\:55 {
-    transform: translateY(55%);
+    transform: translateX(55%);
   }
 
   .push-xl\:60 {
-    transform: translateY(60%);
+    transform: translateX(60%);
   }
 
   .push-xl\:65 {
-    transform: translateY(65%);
+    transform: translateX(65%);
   }
 
   .push-xl\:66 {
-    transform: translateY(66.6666666667%);
+    transform: translateX(66.6666666667%);
   }
 
   .push-xl\:70 {
-    transform: translateY(70%);
+    transform: translateX(70%);
   }
 
   .push-xl\:75 {
-    transform: translateY(75%);
+    transform: translateX(75%);
   }
 
   .push-xl\:80 {
-    transform: translateY(80%);
+    transform: translateX(80%);
   }
 
   .push-xl\:85 {
-    transform: translateY(85%);
+    transform: translateX(85%);
   }
 
   .push-xl\:90 {
-    transform: translateY(90%);
+    transform: translateX(90%);
   }
 
   .push-xl\:95 {
-    transform: translateY(95%);
+    transform: translateX(95%);
   }
 
   .push-xl\:100 {
-    transform: translateY(100%);
+    transform: translateX(100%);
   }
 
   .pull-xl\:0 {

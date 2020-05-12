@@ -1,42 +1,85 @@
+//
+// Checks the type of a variable against the given type.
+//
+// @param {string} $type
+// @param {mixed} $var
+// @return {boolean}
+//
 @function is-type($type, $var) {
   @return type-of($var) == #{$type};
 }
 
+//
+// Checks if a number is a fraction.
+//
+// @param {number} $number
+// @return {boolean}
+//
 @function is-fraction($number) {
   @return $number != floor($number);
 }
 
-@function percentages($map-or-list, $negative: null) {
+//
+// Return a list or map of percentages of a list of map of fraction.
+//
+// @param {map|list} $map-or-list
+// @param {boolean} $negative-values
+// @return {map|list}
+//
+@function percentages($map-or-list, $negative-values: false) {
   $returnValue: ();
-  @if (is-type(map, $map-or-list)) {
+  @if (is-type('map', $map-or-list)) {
     @each $key, $value in $map-or-list {
-      $pair: ($key: percentage(if($negative == negative, -1 * $value, $value)));
+      $pair: ($key: percentage(if($negative-values == true, -1 * $value, $value)));
       $returnValue: map-merge($returnValue, $pair);
     }
   }
-  @else if (is-type(list, $map-or-list)) {
+  @else if (is-type('list', $map-or-list)) {
     @each $value in $map-or-list {
-      $item: percentage(if($negative == negative, -1 * $value, $value));
+      $item: percentage(if($negative-values == true, -1 * $value, $value));
       $returnValue: append($returnValue, $item, comma);
     }
   }
   @return $returnValue;
 }
 
+//
+// Returns a value of cubic-bezier in reverse.
+//
+// @param {number} $arg1
+// @param {number} $arg2
+// @param {number} $arg3
+// @param {number} $arg4
+// @return {string}
+//
 @function reverse-cubic-bezier($arg1, $arg2, $arg3, $arg4) {
   @return 1 - ($arg3), 1 - ($arg4), 1 - ($arg1), 1 - ($arg2);
 }
 
-@function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+//
+// Replace the occurrence of the search with the replace.
+//
+// @param {string} $subject
+// @param {string} $search
+// @param {string} $replace
+// @return {string}
+//
+@function str-replace($subject, $search, $replace: '') {
+  $index: str-index($subject, $search);
+  @if ($index) {
+    @return str-slice($subject, 1, $index - 1) + $replace + str-replace(str-slice($subject, $index + str-length($search)), $search, $replace);
   }
-  @return $string;
+  @return $subject;
 }
 
+//
+// Strips the unit of a number with unit.
+//
+// @param {number} $number
+// @return {number}
+//
 @function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
+  @if (is-type('number', $number) and not unitless($number)) {
     @return $number / ($number * 0 + 1);
   }
   @return $number;

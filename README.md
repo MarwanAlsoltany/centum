@@ -4,24 +4,37 @@ A hundred-based CSS flex grid system with full flexibility to customize it exact
 
 *"Stop including unneeded code!"*
 
+1. [About Centum](#what-is-centum)
+2. [Why Centum](#why-use-centum)
+3. [The Grid](#building-the-grid)
+4. [The CSS Classes](#the-generated-css-classes)
+    - [Variables](#variables-mappings)
+5. [Examples](#examples)
+6. [Configuration](#configuration)
+    - [Synopsis](#map-synopsis)
+    - [Extra](#extra-features)
+7. [Links](#links)
+8. [License](#license)
+9. [Changelog](./CHANGELOG.md)
+
 
 ---
 
 
 ### What is Centum?
 
-Centum is a refined CSS flex grid system that gives both developers and editors a humanized interface and unlimited ability to customize the grid to their needs. Centum is a hundred based grid system and is built to be mobile-first.
+Centum is a refined CSS flex grid system that gives both developers and editors a humanized interface and unlimited ability to customize the grid to their needs. Centum is a hundred based (percentage-based) grid system and is built to be mobile-first.
 
 
 ### Why use Centum?
 
-The main reason Centum was created is to give the developers the ability to really use what they really need for a specific project. 
+The main reason Centum was created is to give the developers the ability to really use what they really need for a specific project.
 
-Every project's blueprint has a predefined grid that gets reused across the entire project, having 75% or more of the rest code of the grid system, not being used is pointless. The problem with other grid systems is that they come mostly in a framework, shipped with thousands of lines of CSS that no one will ever use. 
+Every project's blueprint has a predefined grid that gets reused across the entire project, having 75% or more of the rest code of the grid system not being used is pointless. The problem with other grid systems is that they come mostly in a framework, shipped with thousands of lines of CSS that no one will ever use.
 
 Centum focuses on the ability to give the developers unlimited possibilities to modify the grid to their needs in the same language they use for styling (no external config file is required) and the naming convention that fits their code-base (as every bit of Centum classes except `:` and `-` comes from the configuration map). This flexibility of modification gives the developers the ability to write friendly class-names that are easy to remember and not vague for editors or other developers.
 
-Also, the 100-based grid system is easier for humans to grasp offers the possibility to create layouts that no one has ever thought about due to the restrictions of 12-based grid systems.
+Also, the hundred-based grid system is easier for humans to grasp offers the possibility to create layouts that no one has ever thought about due to the restrictions of twelve-based grid systems.
 
 
 ---
@@ -31,7 +44,7 @@ Also, the 100-based grid system is easier for humans to grasp offers the possibi
 
 Centum in simple words is just a big SCSS map. It all depends on your requirements, they define how big or small this map can be. The following example is an example that pushes a CSS Flex Grid System to its absolute limits. That's why it's worth noting that it's really rare that you will encounter a project that can utilize the defined grid bellow.
 
-<small>![#ff6347](https://via.placeholder.com/10/f03c15/000000?text=+) **Note:** *Centum requires full understanding of CSS Flex-Box in order to fully utilize it.*</small>
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Centum requires a full understanding of CSS Flex-Box in order to fully utilize it.*
 
 1. **Breakpoints definition**
 
@@ -104,9 +117,9 @@ $flex-grid: (
     'name': 'pack',
     'map': map-merge((), $breakpoints),
     'responsive': true,
-    'properties': (
+    'options': (
       'extent': (
-        'name': 'width',
+        'property': 'width',
         'values': (
           'narrowest': 20%,
           'narrower': 30%,
@@ -123,9 +136,9 @@ $flex-grid: (
     'name': 'tier',
     'map': map-merge((), $containers),
     'responsive': true,
-    'properties': (
+    'options': (
       'content': (
-        'name': 'align-content',
+        'property': 'align-content',
         'values': (
           'start': 'flex-start',
           'end': 'flex-end',
@@ -137,7 +150,7 @@ $flex-grid: (
         )
       ),
       'items': (
-        'name': 'align-items',
+        'property': 'align-items',
         'values': (
           'start': 'flex-start',
           'end': 'flex-end',
@@ -147,7 +160,7 @@ $flex-grid: (
         )
       ),
       'justify': (
-        'name': 'justify-content',
+        'property': 'justify-content',
         'values': (
           'start': 'flex-start',
           'end': 'flex-end',
@@ -159,7 +172,7 @@ $flex-grid: (
         )
       ),
       'flow': (
-        'name': 'flex-flow',
+        'property': 'flex-flow',
         'values': (
           'row-wrap': 'row wrap',
           'row-reverse-wrap': 'row-reverse wrap',
@@ -181,9 +194,9 @@ $flex-grid: (
     'name': 'cell',
     'map': map-merge((), $cells),
     'responsive': true,
-    'properties': (
+    'options': (
       'index': (
-        'name': 'order',
+        'property': 'order',
         'values': (
           'first': -1,
           'last': 99,
@@ -200,27 +213,27 @@ $flex-grid: (
         )
       ),
       'push': (
-        'name': 'transform',
-        'wrapper':  'translateY(%var%)',
-        'values': percentages(map-merge((), $cells))
+        'property': 'transform',
+        'wrapper': 'translateX(%var%)',
+        'values': percentages(map-merge((), $cells), false)
       ),
       'pull': (
-        'name': 'transform',
+        'property': 'transform',
         'wrapper': 'translateX(%var%)',
-        'values': percentages(map-merge((), $cells), negative)
+        'values': percentages(map-merge((), $cells), true)
       ),
       'drop': (
-        'name': 'transform',
+        'property': 'transform',
         'wrapper': 'translateY(%var%)',
-        'values': percentages(map-merge((), $cells))
+        'values': percentages(map-merge((), $cells), false)
       ),
       'lift': (
-        'name': 'transform',
-        'wrapper':  'translateY(%var%)',
-        'values': percentages(map-merge((), $cells), negative)
+        'property': 'transform',
+        'wrapper': 'translateY(%var%)',
+        'values': percentages(map-merge((), $cells), true)
       ),
       'lead': (
-        'name': 'margin-top',
+        'property': 'margin-top',
         'values': (
           '0': 0,
           '0\\.5': 15px,
@@ -237,7 +250,7 @@ $flex-grid: (
         )
       ),
       'rear': (
-        'name': 'margin-bottom',
+        'property': 'margin-bottom',
         'values': (
           '0': 0,
           '0\\.5': 15px,
@@ -270,7 +283,9 @@ $flex-grid: (
 @include make-flex-grid-cell($flex-grid);
 ```
 
-> <small>See [variables](./sass/abstracts/_variables.scss), [grid](./sass/layout/_grid.scss).</small>
+![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *About 200 lines of configuration in SASS resulted in almost 5200 lines of vanilla CSS, this is just shy of 4%.*
+
+> See [variables](./sass/abstracts/_variables.scss), [grid](./sass/layout/_grid.scss).
 
 
 ---
@@ -278,26 +293,26 @@ $flex-grid: (
 
 ## The Generated CSS Classes
 
-<small>![#ff6347](https://via.placeholder.com/10/f03c15/000000?text=+) **Note:** `?` *optional*, `|` *or*.</small>
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** `?` *optional* `|` *or*
 
 | Name | Class | Example |
 | --- | --- | --- |
 | Pack | `pack:{type?}` <br/> `{p-option}-{breakpoint?}:{value}` | `pack` <br/> `pack:no-gutters` <br/> `extent-xl:medium` <br/> `extent:wide` |
 | Tier | `tier:{type?}` <br/> `{t-option}-{breakpoint?}:{value}` | `tier` <br/> `tier:no-gutters` <br/> `justify-md:between` <br/> `justify:center` |
-| Cell | `cell-{breakpoint?}:{percentage}` <br/> <code>{c-option}-{breakpoint?}:{percentage&#124;number&#124;word}</code> | `cell` <br/> `cell-md:25` <br/> `lead-xs:3` <br/> `rear:1` |
+| Cell | `cell-{breakpoint?}:{percentage}` <br/> <code>{c-option}-{breakpoint?}:{percentage&#124;number&#124;word}</code> | `cell` <br/> `cell:33` <br/> `cell-md:25` <br/> `lead-xs:3` <br/> `rear:1` |
 
 #### Variables mappings
 
 | Variable | Possible Values |
 | --- | --- |
-| `{breakpoint}` | `xs`, `sm`, `md`, `lg`, `xl` <small>*(576px, 768px, 992px, 1280px, 1600px, no breakpoint = mobile)*</small> |
+| `{breakpoint}` | `xs`, `sm`, `md`, `lg`, `xl` *(576px, 768px, 992px, 1280px, 1600px, no breakpoint = mobile)* |
 | `{type}` | `no-gutters` |
 | `{p-option}` | `extent` |
-| `{p-value}` | `narrow`, `medium`, `wider` <small>*(refer to `$flex-grid` for the full list)*</small> |
+| `{p-value}` | `narrow`, `medium`, `wider` *(refer to `$flex-grid` for the full list)* |
 | `{t-option}` | `content`, `items`, `justify`, `flow` |
-| `{t-value}` | `start`, `stretch`, `between`, `row-nowrap` <small>*(refer to `$flex-grid` for the full list)*</small> |
+| `{t-value}` | `start`, `stretch`, `between`, `row-nowrap` *(refer to `$flex-grid` for the full list)* |
 | `{c-option}` | `index`, `push`, `pull`, `drop`, `lift`, `lead`, `rear` |
-| `{percentage}` | `0`, `5`, `0`, `15`, `16`, `20`, `25`, `30`, `33`, `35`, `40`, `45`, `48`, `50`, `55`, `60`, `65`, `66`, `70`, `75`, `80`, `85`, `90`, `95`, `100` |
+| `{percentage}` | `0`, `5`, `10`, `15`, `16`, `20`, `25`, `30`, `33`, `35`, `40`, `45`, `48`, `50`, `55`, `60`, `65`, `66`, `70`, `75`, `80`, `85`, `90`, `95`, `100` |
 | `{number}` | `0.5`, `1`, `1.5`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9` |
 | `{word}` | `first`, `last` |
 
@@ -393,39 +408,43 @@ $flex-grid: (
 </div>
 ```
 
+
 ---
 
 
 ## Configuration
-The nicest thing about Centum is when you do not like the implementation or behavior of a specific class, you can easily swap it just by changing the property (`name`) passed in the map, for example, the `push` option under `cell` → `properties` uses `transform` to translate the cell to another position. You can simply change it to `margin-left` for example and omit the extra `wrapper` line to make it use `margin-left: 10%;` instead of `transform: translateX(10%);` etc ...
 
-Any unused breakpoints and options can be commented out before the final compilation, this results in a massive decrease in file size.
+The nicest thing about Centum is when you do not like the implementation or behavior of a specific class, you can easily swap it just by changing the `property` passed in the map, for example, the `push` option under `cell` → `options` uses `transform` to translate the cell to another position. You can simply change it to `margin-left` for example and omit the `wrapper` line (as we don't need to warp the value anymore) to make it use `margin-left: 10%;` instead of `transform: translateX(10%);` etc ...
+
+Any unused breakpoints and options can be commented out before the final compilation, this will result in a massive decrease in file size.
 
 #### Map synopsis
 
 ```scss
 $flex-grid: (
-  'pack': ( // key ('pack') is a required used in the mixins, must stay like this
-    'name': 'pack', // value ('pack') is used as pack class-name
-    'map': ( // key ('map') is a required used in the mixins, must stay like this
-      'xs': 36em, // key ('xs') is used as breakpoint in class-names, value is used as width
+  // tacking the pack as example
+  'pack': ( // the key ('pack') is required and used in mixins, must stay like this.
+    'name': 'pack', // value ('pack') is used as pack class-name.
+    'map': ( // the key ('map') is required and used in mixins, must stay like this.
+      'xs': 36em, // the key ('xs') is used as breakpoint in class-names, value is used as width.
       ...
     ),
-    'responsive': true, // controls wether media queries should be generated
-    'properties': ( // key ('properties') is a required used in the mixins, must stay like this
-      'extent': ( // key ('extent') is used as option name in class-name
-        'name': 'width', // value ('width') is used as css property for this option
-        'values': ( // key ('values') is a required used in the mixins, must stay like this
-          'narrowest': 20%, // key ('narrowest') is used as option value in class-name
-          'narrower': 40%, // value (30%) is used as css value for the css propery ('width')
+    'responsive': true, // controls wether media queries (responsive classes) should be generated.
+    'options': ( // the key ('options') is required and used in mixins, must stay like this.
+      'extent': ( // the key ('extent') is used as option name in class-name.
+        'property': 'width', // value ('width') is used as css property for this option.
+        'values': ( // the key ('values') is required and used in mixins, must stay like this.
+          'narrowest': 20%, // the key ('narrowest') is used as option value in class-name.
+          'narrower': 40%, // the value (40%) is used as css value for the css propery ('width').
           ...
         )
       )
     )
   ),
   ...
-  // everything that has no comment must stay as is, as the mixins expect that key
-  // if for example 'properties' are not need simply replace the value with null
+  // everything that has no comment must stay as is, as the mixins expect that key.
+  // when using the 'wrapper' in an option, the placeholder (%var%) is a keyword that the mixin looks for.
+  // if for example 'options' are not need simply replace the value with null.
 );
 ```
 
@@ -437,13 +456,13 @@ Centum is shipped with some neat SCSS mixins and function, few to mention:
 
 ```scss
 @include viewport($breakpoint: 'md', $type: 'max', $dimension: 'width') {
-  // here comes your css for this breakpoint
+  /* here comes your css for this breakpoint */
 }
 
 @include make-options(
-  $properties: (
+  $options: (
     'bg': (
-      'name': 'background-color',
+      'property': 'background-color',
       'values': (
         'red': #FF0000,
         'green': #00FF00
@@ -452,10 +471,10 @@ Centum is shipped with some neat SCSS mixins and function, few to mention:
   ),
   $infix: '-basic'
 );
-/* 
+/*
 .bg-basic:red {
   background-color: #FF0000;
-}
+} 
 .bg-basic:green {
   background-color: #00FF00;
 } 
@@ -465,12 +484,12 @@ Centum is shipped with some neat SCSS mixins and function, few to mention:
 * Functions
 
 ```scss
-str-replace($string, $search, $replace);
+str-replace($subject, $search, $replace);
 strip-unit($number)
-percentages($map-or-list, $negative);
+percentages($map-or-list, $negative-values);
 ```
 
-> <small>See [mixins](./sass/abstracts/_mixins.scss), [functions](./sass/abstracts/_functions.scss).</small>
+> See [mixins](./sass/abstracts/_mixins.scss), [functions](./sass/abstracts/_functions.scss).
 
 
 ---
@@ -486,6 +505,7 @@ percentages($map-or-list, $negative);
 
 ## License
 
-Centum is an open-sourced package licensed under the **GPLv3** License.
+Centum is an open-sourced package licensed under the [**GPLv3** License](./LICENSE).
+Copyright 2020 Marwan Al-Soltany. All rights reserved.
 
 <br/>
