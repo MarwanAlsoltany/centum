@@ -1,0 +1,17 @@
+:root {
+
+  
+  --grid: #{$name + '@' + $version};
+  @each $breakpoint-name, $breakpoint-value in $breakpoints {
+    --breakpoint-#{$breakpoint-name}: #{$breakpoint-value};
+  }
+
+  @each $container-name, $container-value in $containers {
+    --container-#{$container-name}: #{$container-value};
+  }
+
+  @each $cell-name, $cell-value in $cells {
+    --cell-#{$cell-name}: #{$cell-value * 100 + unquote('%')};
+  }
+
+}

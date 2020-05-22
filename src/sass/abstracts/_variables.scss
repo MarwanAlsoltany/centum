@@ -1,3 +1,8 @@
+// variables set via webpack
+$name: 'centum' !default;
+$version: 'x.x.x' !default;
+$env: 'development' !default;
+
 // used in grid mixins and viewport mixin
 $breakpoints: (
   'xs': 36em, // 576px,

@@ -28,7 +28,7 @@
 //
 @function percentages($map-or-list, $negative-values: false) {
   $returnValue: ();
-  @if (is-type('map', $map-or-list)) {
+  @if is-type('map', $map-or-list) {
     @each $key, $value in $map-or-list {
       $pair: ($key: percentage(if($negative-values == true, -1 * $value, $value)));
       $returnValue: map-merge($returnValue, $pair);
@@ -66,7 +66,7 @@
 //
 @function str-replace($subject, $search, $replace: '') {
   $index: str-index($subject, $search);
-  @if ($index) {
+  @if $index {
     @return str-slice($subject, 1, $index - 1) + $replace + str-replace(str-slice($subject, $index + str-length($search)), $search, $replace);
   }
   @return $subject;
@@ -79,7 +79,7 @@
 // @return {number}
 //
 @function strip-unit($number) {
-  @if (is-type('number', $number) and not unitless($number)) {
+  @if is-type('number', $number) and not unitless($number) {
     @return $number / ($number * 0 + 1);
   }
   @return $number;

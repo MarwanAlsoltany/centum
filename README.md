@@ -4,27 +4,75 @@ A hundred-based CSS flex grid system with full flexibility to customize it exact
 
 *"Stop including unneeded code!"*
 
-1. [About Centum](#what-is-centum)
-2. [Why Centum](#why-use-centum)
-3. [The Grid](#building-the-grid)
-4. [The CSS Classes](#the-generated-css-classes)
+1. [Installtion](#installtion)
+2. [About Centum](#what-is-centum)
+3. [Why Centum](#why-use-centum)
+4. [The Grid](#building-the-grid)
+5. [The CSS Classes](#the-generated-css-classes)
     - [Variables](#variables-mappings)
-5. [Examples](#examples)
-6. [Configuration](#configuration)
+6. [Examples](#examples)
+7. [Configuration](#configuration)
     - [Synopsis](#map-synopsis)
     - [Extra](#extra-features)
-7. [Links](#links)
-8. [License](#license)
-9. [Changelog](./CHANGELOG.md)
+8. [Links](#links)
+9. [License](#license)
+10. [Changelog](./CHANGELOG.md)
 
 
 ---
 
 
+### Installtion
+
+Try Centum out now:
+
+* **NPM**
+```sh
+npm install centum
+```
+
+* **Yarn**
+```sh
+yarn add centum
+```
+
+* **Bower**
+```sh
+bower install marwanalsoltany/centum
+```
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Add Centum as development dependency if you are going to compile it yourself.*
+
+After installation, you can import the CSS/SCSS file into your project using one these snippet:
+
+###### In JavaScript
+
+```js
+import 'centum/centum.scss'; // scss file containg centu, default configuration
+import 'centum/src/main.scss'; // same as the line above
+import 'centum/dist/centum@VERSION.css'; // compiled css of the line above
+import 'centum/dist/centum@VERSION.min.css'; // minified version of the line above
+```
+
+###### In SCSS
+
+```scss
+@import 'PATH/TO/node_modules/centum/centum.scss'; // scss file containg centu, default configuration
+@import 'PATH/TO/node_modules/centum/src/main.scss'; // same as the line above
+```
+
+###### In CSS
+
+```css
+@import 'PATH/TO/node_modules/centum/dist/centum@VERSION.css'; /* compiled css of centum */
+@import 'PATH/TO/node_modules/centum/dist/centum@VERSION.min.css'; /* minified version of the line above */
+```
+
+> See [jsdelivr.com/package/npm/centum](https://www.jsdelivr.com/package/npm/centum) (CDN).
+
+
 ### What is Centum?
 
-Centum is a refined CSS flex grid system that gives both developers and editors a humanized interface and unlimited ability to customize the grid to their needs. Centum is a hundred based (percentage-based) grid system and is built to be mobile-first.
-
+Centum is a refined CSS flex grid system that gives both developers and editors a humanized interface and unlimited ability to customize the grid to their needs. Centum is a hundred-based (percentage-based) grid system and is built to be mobile-first.
 
 ### Why use Centum?
 
@@ -283,9 +331,9 @@ $flex-grid: (
 @include make-flex-grid-cell($flex-grid);
 ```
 
-![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *About 200 lines of configuration in SASS resulted in almost 5200 lines of vanilla CSS, this is just shy of 4%.*
+![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *About 200 lines of configuration in SCSS resulted in nearly 6700 lines of vanilla CSS, this is just shy of 3%.*
 
-> See [variables](./sass/abstracts/_variables.scss), [grid](./sass/layout/_grid.scss).
+> See [variables](./src/sass/abstracts/_variables.scss), [grid](./src/sass/layout/_grid.scss).
 
 
 ---
@@ -293,7 +341,7 @@ $flex-grid: (
 
 ## The Generated CSS Classes
 
-![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** `?` *optional* `|` *or*
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** `?` *= optional,* `|` *= or.*
 
 | Name | Class | Example |
 | --- | --- | --- |
@@ -363,7 +411,7 @@ $flex-grid: (
 * **A container on all devices without gutters containing five 20% columns in reversed order that can not wrap**
 
 ```html
-<div class="pack:no-gutters">
+<div class="pack">
   <div class="tier:no-gutters flow:row-reverse-nowrap">
     <div class="cell:20">
       Here comes your content
@@ -384,7 +432,7 @@ $flex-grid: (
 </div>
 ```
 
-* **A container on all devices containing one 50% column in the dead center of the container**
+* **A container on all devices containing one 50% column in the dead center of the container (the cells' container must have a height!)**
 
 ```html
 <div class="pack">
@@ -396,18 +444,22 @@ $flex-grid: (
 </div>
 ```
 
-* **A container on large desktops containing two 30% columns pushed to the sides**
+* **A container on large desktops containing two 40% columns pushed to the sides**
 
 ```html
 <div class="pack">
   <div class="tier justify-xl:between">
-    <div class="cell:100 cell-xl:50">
+    <div class="cell:100 cell-xl:40">
+      Here comes your content
+    </div>
+    <div class="cell:100 cell-xl:40">
       Here comes your content
     </div>
   </div>
 </div>
 ```
 
+> See [demo.html](./tests/demo.html).
 
 ---
 
@@ -489,15 +541,16 @@ strip-unit($number)
 percentages($map-or-list, $negative-values);
 ```
 
-> See [mixins](./sass/abstracts/_mixins.scss), [functions](./sass/abstracts/_functions.scss).
+> See [mixins](./src/sass/abstracts/_mixins.scss), [functions](./src/sass/abstracts/_functions.scss).
 
 
 ---
 
 
 ## Links
-* [centum@1.0.0.css](https://raw.githubusercontent.com/MarwanAlsoltany/centum/master/centum@1.0.0.css)
-* [centum@1.0.0.min.css](https://raw.githubusercontent.com/MarwanAlsoltany/centum/master/centum@1.0.0.min.css)
+* Raw file: [centum@1.0.0.css](https://raw.githubusercontent.com/MarwanAlsoltany/centum/master/dist/centum@1.0.0.css)
+* Raw file: [centum@1.0.0.min.css](https://raw.githubusercontent.com/MarwanAlsoltany/centum/master/dist/centum@1.0.0.min.css)
+* CDN: [jsdelivr.com/package/npm/centum](https://www.jsdelivr.com/package/npm/centum)
 
 
 ---
@@ -505,7 +558,7 @@ percentages($map-or-list, $negative-values);
 
 ## License
 
-Centum is an open-sourced package licensed under the [**GPLv3** License](./LICENSE).
+Centum is an open-sourced package licensed under the [**GNU General Public License v3.0 or later**](./LICENSE).
+<br/>
 Copyright 2020 Marwan Al-Soltany. All rights reserved.
-
 <br/>

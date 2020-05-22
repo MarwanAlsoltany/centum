@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centum</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; }
+    .background { background: rgba(0,0,0,0.05); }
+    .blue { background: dodgerblue; }
+    .orange { background: tomato; }
+    .teal { background: teal; }
+    .purple { background: rebeccapurple; }
+    .red { background: crimson; }
+    .style { min-width: 100px; min-height: 100px; color: white; font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 100px; text-align: center;}
+    .spacer { height: 30px; }
+  </style>
+  <link rel="stylesheet" href="../dist/centum@1.0.0.css">
+</head>
+<body>
+  <div class="spacer"></div>
+
+  <div class="pack background">
+    <div class="tier content:center">
+      <div class="cell:100 cell-sm:25">
+        <div class="blue style">A</div>
+      </div>
+      <div class="cell:100 cell-sm:50">
+        <div class="sub-cell">
+          <div class="orange style">B-1</div>
+        </div>
+        <div class="sub-cell">
+          <div class="teal style">B-2</div>
+        </div>
+      </div>
+      <div class="cell:100 cell-sm:25">
+        <div class="purple style">C</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="pack extent-md:narrow background">
+    <div class="tier">
+      <div class="cell:100 cell-sm:50 cell-md:33">
+        <div class="blue style">A</div>
+      </div>
+      <div class="cell:100 cell-sm:50 cell-md:66">
+        <div class="purple style">B</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="pack background">
+    <div class="tier:no-gutters flow:row-reverse-nowrap">
+      <div class="cell:20">
+        <div class="blue style">A</div>
+      </div>
+      <div class="cell:20">
+        <div class="orange style">B</div>
+      </div>
+      <div class="cell:20">
+        <div class="teal style">C</div>
+      </div>
+      <div class="cell:20">
+        <div class="purple style">D</div>
+      </div>
+      <div class="cell:20">
+        <div class="red style">E</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="pack background">
+    <div class="tier justify:center content:center" style="height:500px">
+      <div class="cell:50">
+        <div class="orange style">I'm in the dead-center!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="pack background">
+    <div class="tier justify-xl:between">
+      <div class="cell:100 cell-xl:40">
+        <div class="blue style">A</div>
+      </div>
+      <div class="cell:100 cell-xl:40">
+        <div class="red style">B</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+</body>
+</html>
