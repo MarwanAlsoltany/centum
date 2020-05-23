@@ -5,19 +5,19 @@ $env: 'development' !default;
 
 // used in grid mixins and viewport mixin
 $breakpoints: (
-  'xs': 36em, // 576px,
-  'sm': 48em, // 768px,
-  'md': 62em, // 992px,
-  'lg': 80em, // 1280px,
-  'xl': 100em, // 1600px,
+  'xs': 36em, // 576px
+  'sm': 48em, // 768px
+  'md': 62em, // 992px
+  'lg': 80em, // 1280px
+  'xl': 100em, // 1600px
 ) !default;
 
 // used in grid mixins
 $containers: (
-  'xs': 34em, // 544px,
-  'sm': 46em, // 736px,
-  'md': 60em, // 960px,
-  'lg': 75em, // 1200px,
+  'xs': 34em, // 544px
+  'sm': 46em, // 736px
+  'md': 60em, // 960px
+  'lg': 75em, // 1200px
   'xl': 95em // 1520px
 ) !default;
 

@@ -5,24 +5,25 @@ A hundred-based CSS flex grid system with full flexibility to customize it exact
 *"Stop including unneeded code!"*
 
 1. [Installtion](#installtion)
-2. [About Centum](#what-is-centum)
-3. [Why Centum](#why-use-centum)
-4. [The Grid](#building-the-grid)
-5. [The CSS Classes](#the-generated-css-classes)
+2. [About Centum](#about-centum)
+3. [The Grid](#building-the-grid)
+4. [The CSS Classes](#the-generated-css-classes)
     - [Variables](#variables-mappings)
-6. [Examples](#examples)
-7. [Configuration](#configuration)
+5. [Configuration](#configuration)
     - [Synopsis](#map-synopsis)
     - [Extra](#extra-features)
-8. [Links](#links)
-9. [License](#license)
-10. [Changelog](./CHANGELOG.md)
+6. [Examples](#examples)
+    - [SCSS](#scss)
+    - [HTML](#html)
+7. [Links](#links)
+8. [License](#license)
+9. [Changelog](./CHANGELOG.md)
 
 
 ---
 
 
-### Installtion
+## Installtion
 
 Try Centum out now:
 
@@ -32,20 +33,11 @@ Try Centum out now:
 
 * **Bower:** `bower install marwanalsoltany/centum`
 
-* **Git:** `git clone https://github.com/MarwanAlsoltany/centum.git` in your project and delete all files except `/src`, `/dist` and `centum.scss`
+* **Git:** `git clone https://github.com/MarwanAlsoltany/centum.git` in your project, `cd centum` and delete all files that you don't need (only `/src`, `/dist` and `centum.scss` are required).
 
 ![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Add Centum as a development dependency if you are going to compile it yourself.*
 
 After installation, you can import the CSS/SCSS file into your project using one line of these snippet:
-
-###### In JavaScript (when using a bundler)
-
-```js
-import 'centum/centum.scss'; // scss file containing centum with default configuration
-import 'centum/src/main.scss'; // same as the line above
-import 'centum/dist/centum@VERSION.css'; // compiled css of the line above
-import 'centum/dist/centum@VERSION.min.css'; // minified version of the line above
-```
 
 ###### In SCSS
 
@@ -61,11 +53,25 @@ import 'centum/dist/centum@VERSION.min.css'; // minified version of the line abo
 @import 'PATH/TO/node_modules/centum/dist/centum@VERSION.min.css'; /* minified version of the line above */
 ```
 
+###### In JavaScript (when using a bundler)
+
+```js
+import 'centum/centum.scss'; // scss file containing centum with default configuration
+import 'centum/src/main.scss'; // same as the line above
+import 'centum/dist/centum@VERSION.css'; // compiled css of the line above
+import 'centum/dist/centum@VERSION.min.css'; // minified version of the line above
+```
+![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *If you require Centum using CommonJS (`require('centum')`), it will throw an error listing the paths that you can use for import.*
+
+![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *Check out `webpack.config.js`, `postcss.config.js` and `.browserslistrc` to get start with compiling Centum yourself.*
+
 > See [jsdelivr.com/package/npm/centum](https://www.jsdelivr.com/package/npm/centum) (CDN).
 
 
 ---
 
+
+## About Centum
 
 ### What is Centum?
 
@@ -95,24 +101,24 @@ Centum in simple words is just a big SCSS map. It all depends on your requiremen
 
 ```scss
 $breakpoints: (
-  'xs': 36em, // 576px,
-  'sm': 48em, // 768px,
-  'md': 62em, // 992px,
-  'lg': 80em, // 1280px,
-  'xl': 100em, // 1600px,
-) !default;
+  'xs': 36em, // 576px
+  'sm': 48em, // 768px
+  'md': 62em, // 992px
+  'lg': 80em, // 1280px
+  'xl': 100em, // 1600px
+);
 ```
 
 2. **Containers definition**
 
 ```scss
 $containers: (
-  'xs': 34em, // 544px,
-  'sm': 46em, // 736px,
-  'md': 60em, // 960px,
-  'lg': 75em, // 1200px,
+  'xs': 34em, // 544px
+  'sm': 46em, // 736px
+  'md': 60em, // 960px
+  'lg': 75em, // 1200px
   'xl': 95em // 1520px
-) !default;
+);
 ```
 
 3. **Cells definition**
@@ -144,7 +150,7 @@ $cells: (
   '90': 0.9, // 90%
   '95': 0.95, // 95%
   '100': 1 // 100%
-) !default;
+);
 ```
 
 4. **Media queries definition**
@@ -365,7 +371,175 @@ $flex-grid: (
 ---
 
 
+## Configuration
+
+The nicest thing about Centum is when you do not like the implementation or behavior of a specific class, you can easily swap it just by changing the `property` passed in the map, for example, the `push` option under `cell` → `options` uses `transform` to translate the cell to another position. You can simply change it to `margin-left` for example and omit the `wrapper` line (as we don't need to warp the value anymore) to make it use `margin-left: 10%;` instead of `transform: translateX(10%);` etc ...
+
+Any unused breakpoints and options can be commented out before the final compilation, this will result in a massive decrease in file size.
+
+#### Map synopsis
+
+```scss
+$flex-grid: (
+  // tacking the pack as example
+  'pack': ( // the key ('pack') is required and used in mixins, must stay like this.
+    'name': 'pack', // value ('pack') is used as pack class-name.
+    'map': ( // the key ('map') is required and used in mixins, must stay like this.
+      'xs': 36em, // the key ('xs') is used as breakpoint in class-names, the value (36em) is used as width.
+      ...
+    ),
+    'responsive': true, // controls wether media queries (responsive classes) should be generated.
+    'options': ( // the key ('options') is required and used in mixins, must stay like this.
+      'extent': ( // the key ('extent') is used as option name in class-name.
+        'property': 'width', // value ('width') is used as css property for this option.
+        'values': ( // the key ('values') is required and used in mixins, must stay like this.
+          'narrowest': 20%, // the key ('narrowest') is used as option value in class-name.
+          'narrower': 40%, // the value (40%) is used as css value for the css propery ('width').
+          ...
+        )
+      )
+    )
+  ),
+  ...
+  // everything that has no comment must stay as is, as the mixins expect that key.
+  // when using the ('wrapper') in an option, the placeholder (%var%) is a keyword that the mixin looks for.
+  // if for example ('options') are not need simply replace the value with null.
+);
+```
+
+#### Extra Features
+
+Centum is shipped with some neat SCSS mixins and function, few to mention:
+
+* Mixins
+
+```scss
+@include viewport($breakpoint: 'md', $type: 'max', $dimension: 'width') {
+  /* here comes your css for this breakpoint */
+}
+
+@include make-options(
+  $options: (
+    'bg': (
+      'property': 'background-color',
+      'values': (
+        'red': #FF0000,
+        'green': #00FF00
+      )
+    )
+  ),
+  $infix: '-basic'
+);
+/*
+.bg-basic:red {
+  background-color: #FF0000;
+} 
+.bg-basic:green {
+  background-color: #00FF00;
+} 
+*/
+```
+
+* Functions
+
+```scss
+str-replace($subject, $search, $replace);
+strip-unit($number)
+percentages($map-or-list, $negative-values);
+```
+
+> See [mixins](./src/sass/abstracts/_mixins.scss), [functions](./src/sass/abstracts/_functions.scss).
+
+
+---
+
+
 ## Examples
+
+#### SCSS
+
+* **An example of a reasonable SCSS configuration for Centum.**
+
+```scss
+$flex-grid: (
+  'pack': (
+    'name': 'pack',
+    'map': (
+      'xs': 576px,
+      'sm': 768px,
+      'md': 992px,
+      'lg': 1280px,
+    ),
+    'responsive': true,
+    'options': (
+      'extent': (
+        'property': 'width',
+        'values': (
+          'medium': 60%
+        )
+      )
+    )
+  ),
+  'tier': (
+    'name': 'tier',
+    'map': (
+      'xs': 544px,
+      'sm': 736px,
+      'md': 960px,
+      'lg': 1200px,
+    ),
+    'responsive': true,
+    'options': (
+      'content': (
+        'property': 'align-content',
+        'values': (
+          'around': 'space-around'
+        )
+      ),
+      'items': (
+        'property': 'align-items',
+        'values': (
+          'start': 'flex-start',
+          'baseline': 'baseline'
+        )
+      ),
+      'justify': (
+        'property': 'justify-content',
+        'values': (
+          'end': 'flex-end',
+          'center': 'center',
+          'between': 'space-between'
+        )
+      )
+    )
+  ),
+  'cell': (
+    'name': 'cell',
+    'map': (
+      '20': 0.2,
+      '25': 0.25,
+      '30': 0.3,
+      '33': 1/3,
+      '50': 0.5,
+      '66': 2/3,
+      '70': 0.7,
+      '80': 0.8,
+      '100': 1
+    ),
+    'responsive': true,
+    'options': null,
+  ),
+  'gutter': (
+    'name': 'gutters',
+    'size': 15px,
+    'axis': 'x' // x, y, any other value will be translated to both
+  )
+);
+
+@import 'node_modules/centum/centum.scss';
+```
+
+#### HTML
 
 * **A container on tablet and above containing three columns (two 25% columns and one 50%), the big column is divided into two sub-cells (spaced rows)**
 
@@ -457,88 +631,6 @@ $flex-grid: (
 ```
 
 > See [demo.html](./tests/demo.html).
-
----
-
-
-## Configuration
-
-The nicest thing about Centum is when you do not like the implementation or behavior of a specific class, you can easily swap it just by changing the `property` passed in the map, for example, the `push` option under `cell` → `options` uses `transform` to translate the cell to another position. You can simply change it to `margin-left` for example and omit the `wrapper` line (as we don't need to warp the value anymore) to make it use `margin-left: 10%;` instead of `transform: translateX(10%);` etc ...
-
-Any unused breakpoints and options can be commented out before the final compilation, this will result in a massive decrease in file size.
-
-#### Map synopsis
-
-```scss
-$flex-grid: (
-  // tacking the pack as example
-  'pack': ( // the key ('pack') is required and used in mixins, must stay like this.
-    'name': 'pack', // value ('pack') is used as pack class-name.
-    'map': ( // the key ('map') is required and used in mixins, must stay like this.
-      'xs': 36em, // the key ('xs') is used as breakpoint in class-names, the value (36em) is used as width.
-      ...
-    ),
-    'responsive': true, // controls wether media queries (responsive classes) should be generated.
-    'options': ( // the key ('options') is required and used in mixins, must stay like this.
-      'extent': ( // the key ('extent') is used as option name in class-name.
-        'property': 'width', // value ('width') is used as css property for this option.
-        'values': ( // the key ('values') is required and used in mixins, must stay like this.
-          'narrowest': 20%, // the key ('narrowest') is used as option value in class-name.
-          'narrower': 40%, // the value (40%) is used as css value for the css propery ('width').
-          ...
-        )
-      )
-    )
-  ),
-  ...
-  // everything that has no comment must stay as is, as the mixins expect that key.
-  // when using the ('wrapper') in an option, the placeholder (%var%) is a keyword that the mixin looks for.
-  // if for example ('options') are not need simply replace the value with null.
-);
-```
-
-#### Extra Features
-
-Centum is shipped with some neat SCSS mixins and function, few to mention:
-
-* Mixins
-
-```scss
-@include viewport($breakpoint: 'md', $type: 'max', $dimension: 'width') {
-  /* here comes your css for this breakpoint */
-}
-
-@include make-options(
-  $options: (
-    'bg': (
-      'property': 'background-color',
-      'values': (
-        'red': #FF0000,
-        'green': #00FF00
-      )
-    )
-  ),
-  $infix: '-basic'
-);
-/*
-.bg-basic:red {
-  background-color: #FF0000;
-} 
-.bg-basic:green {
-  background-color: #00FF00;
-} 
-*/
-```
-
-* Functions
-
-```scss
-str-replace($subject, $search, $replace);
-strip-unit($number)
-percentages($map-or-list, $negative-values);
-```
-
-> See [mixins](./src/sass/abstracts/_mixins.scss), [functions](./src/sass/abstracts/_functions.scss).
 
 
 ---

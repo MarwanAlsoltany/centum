@@ -13,3 +13,10 @@ All notable changes to Centum will be documented in this file.
 ### Changed
 - Changed package.json "main" and "files" fields.
 - Changed dist/* files names for a better convention.
+
+## [1.0.2] - 2020-05-24
+### Fixed
+- Fixed a typo in file name in package.json "files" field.
+- Fixed an issue when $flex-grid does not get overridden (added !default).
+### Updated
+- Updated README.md and CHANGELOG.md files.

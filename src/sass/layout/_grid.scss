@@ -159,7 +159,7 @@ $flex-grid: (
     'size': 15px,
     'axis': 'x' // x, y, any other value will be translated to both
   )
-);
+) !default;
 
 @include make-flex-grid-pack($flex-grid);
 @include make-flex-grid-tier($flex-grid);
