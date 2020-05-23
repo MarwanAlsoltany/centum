@@ -49,8 +49,8 @@ After installation, you can import the CSS/SCSS file into your project using one
 ###### In CSS
 
 ```css
-@import 'PATH/TO/node_modules/centum/dist/centum@VERSION.css'; /* compiled css of centum default configuration */
-@import 'PATH/TO/node_modules/centum/dist/centum@VERSION.min.css'; /* minified version of the line above */
+@import 'PATH/TO/node_modules/centum/dist/centum.css'; /* compiled css of centum default configuration */
+@import 'PATH/TO/node_modules/centum/dist/centum.min.css'; /* minified version of the line above */
 ```
 
 ###### In JavaScript (when using a bundler)
@@ -58,8 +58,8 @@ After installation, you can import the CSS/SCSS file into your project using one
 ```js
 import 'centum/centum.scss'; // scss file containing centum with default configuration
 import 'centum/src/main.scss'; // same as the line above
-import 'centum/dist/centum@VERSION.css'; // compiled css of the line above
-import 'centum/dist/centum@VERSION.min.css'; // minified version of the line above
+import 'centum/dist/centum.css'; // compiled css of the line above
+import 'centum/dist/centum.min.css'; // minified version of the line above
 ```
 ![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *If you require Centum using CommonJS (`require('centum')`), it will throw an error listing the paths that you can use for import.*
 

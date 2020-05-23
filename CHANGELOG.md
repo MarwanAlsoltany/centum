@@ -20,3 +20,7 @@ All notable changes to Centum will be documented in this file.
 - Fixed an issue when $flex-grid does not get overridden (added !default).
 ### Updated
 - Updated README.md and CHANGELOG.md files.
+
+## [1.0.3] - 2020-05-24
+### Updated
+- Updated README.md and CHANGELOG.md files.

@@ -1,6 +1,6 @@
 /*!
  * @name            Centum
- * @version         1.0.2
+ * @version         1.0.3
  * @author          Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright       Marwan Al-Soltany 2020
  * @license         MIT
@@ -46,7 +46,7 @@
 }
 
 :root {
-  --grid: centum@1.0.2;
+  --grid: centum@1.0.3;
   --breakpoint-xs: 36em;
   --breakpoint-sm: 48em;
   --breakpoint-md: 62em;

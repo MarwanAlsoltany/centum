@@ -1,6 +1,6 @@
 {
   "name": "centum",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Marwan Al-Soltany <MarwanAlsoltany@gmail.com> (https://marwanalsoltany.github.io/)",
   "license": "MIT",
   "description": "A hundred-based CSS flex grid system with full flexibility to customize it exactly to your needs.",
