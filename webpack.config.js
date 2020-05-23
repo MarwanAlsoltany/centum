@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: `${package.name}@${package.version}.js`,
+    filename: `${package.name}@${package.version}.js`
   },
   module: {
     rules: [
@@ -55,11 +55,11 @@ module.exports = {
           }
         ]
       }
-    ],
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `${package.name}@${package.version}.${process.env.NODE_ENV === 'production' ? 'min.css' : 'css'}`
+      filename: `${package.name}.${process.env.NODE_ENV === 'production' ? 'min.css' : 'css'}`
     })
   ]
 };

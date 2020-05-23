@@ -1,9 +1,9 @@
 /*!
  * @name            Centum
- * @version         1.0.0
+ * @version         1.0.1
  * @author          Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright       Marwan Al-Soltany 2020
- * @license         GPLv3
+ * @license         MIT
  * @see             github.com/MarwanAlsoltany/centum
  */
 .pack, .pack\:no-gutters {
@@ -46,7 +46,7 @@
 }
 
 :root {
-  --grid: centum@1.0.0;
+  --grid: centum@1.0.1;
   --breakpoint-xs: 36em;
   --breakpoint-sm: 48em;
   --breakpoint-md: 62em;
@@ -6718,4 +6718,4 @@
   margin-bottom: 0;
 }
 
-/*# sourceMappingURL=centum@1.0.0.css.map*/
+/*# sourceMappingURL=centum.css.map*/

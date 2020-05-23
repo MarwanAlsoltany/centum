@@ -26,28 +26,22 @@ A hundred-based CSS flex grid system with full flexibility to customize it exact
 
 Try Centum out now:
 
-* **NPM**
-```sh
-npm install centum
-```
+* **NPM:** `npm install centum`
 
-* **Yarn**
-```sh
-yarn add centum
-```
+* **Yarn:** `yarn add centum`
 
-* **Bower**
-```sh
-bower install marwanalsoltany/centum
-```
-![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Add Centum as development dependency if you are going to compile it yourself.*
+* **Bower:** `bower install marwanalsoltany/centum`
 
-After installation, you can import the CSS/SCSS file into your project using one these snippet:
+* **Git:** `git clone https://github.com/MarwanAlsoltany/centum.git` in your project and delete all files except `/src`, `/dist` and `centum.scss`
 
-###### In JavaScript
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Add Centum as a development dependency if you are going to compile it yourself.*
+
+After installation, you can import the CSS/SCSS file into your project using one line of these snippet:
+
+###### In JavaScript (when using a bundler)
 
 ```js
-import 'centum/centum.scss'; // scss file containg centu, default configuration
+import 'centum/centum.scss'; // scss file containing centum with default configuration
 import 'centum/src/main.scss'; // same as the line above
 import 'centum/dist/centum@VERSION.css'; // compiled css of the line above
 import 'centum/dist/centum@VERSION.min.css'; // minified version of the line above
@@ -56,18 +50,21 @@ import 'centum/dist/centum@VERSION.min.css'; // minified version of the line abo
 ###### In SCSS
 
 ```scss
-@import 'PATH/TO/node_modules/centum/centum.scss'; // scss file containg centu, default configuration
+@import 'PATH/TO/node_modules/centum/centum.scss'; // scss file containing centum with default configuration
 @import 'PATH/TO/node_modules/centum/src/main.scss'; // same as the line above
 ```
 
 ###### In CSS
 
 ```css
-@import 'PATH/TO/node_modules/centum/dist/centum@VERSION.css'; /* compiled css of centum */
+@import 'PATH/TO/node_modules/centum/dist/centum@VERSION.css'; /* compiled css of centum default configuration */
 @import 'PATH/TO/node_modules/centum/dist/centum@VERSION.min.css'; /* minified version of the line above */
 ```
 
 > See [jsdelivr.com/package/npm/centum](https://www.jsdelivr.com/package/npm/centum) (CDN).
+
+
+---
 
 
 ### What is Centum?
@@ -90,7 +87,7 @@ Also, the hundred-based grid system is easier for humans to grasp offers the pos
 
 ### Building the Grid
 
-Centum in simple words is just a big SCSS map. It all depends on your requirements, they define how big or small this map can be. The following example is an example that pushes a CSS Flex Grid System to its absolute limits. That's why it's worth noting that it's really rare that you will encounter a project that can utilize the defined grid bellow.
+Centum in simple words is just a big SCSS map. It all depends on your requirements, they define how big or small this map can be. The following example is an example that pushes a CSS flex grid system to its absolute limits. That's why it's worth noting that it's really rare that you will encounter a project that can utilize the defined grid bellow.
 
 ![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Centum requires a full understanding of CSS Flex-Box in order to fully utilize it.*
 
@@ -331,7 +328,7 @@ $flex-grid: (
 @include make-flex-grid-cell($flex-grid);
 ```
 
-![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *About 200 lines of configuration in SCSS resulted in nearly 6700 lines of vanilla CSS, this is just shy of 3%.*
+![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *About 200 lines of configuration in SCSS resulted in nearly 6700 lines (vendor-prefixed) of vanilla CSS, this is just shy of 3%.*
 
 > See [variables](./src/sass/abstracts/_variables.scss), [grid](./src/sass/layout/_grid.scss).
 
@@ -356,9 +353,9 @@ $flex-grid: (
 | `{breakpoint}` | `xs`, `sm`, `md`, `lg`, `xl` *(576px, 768px, 992px, 1280px, 1600px, no breakpoint = mobile)* |
 | `{type}` | `no-gutters` |
 | `{p-option}` | `extent` |
-| `{p-value}` | `narrow`, `medium`, `wider` *(refer to `$flex-grid` for the full list)* |
+| `{p-value}` | `narrow`, `medium`, `wider` ... *(refer to `$flex-grid` for the full list)* |
 | `{t-option}` | `content`, `items`, `justify`, `flow` |
-| `{t-value}` | `start`, `stretch`, `between`, `row-nowrap` *(refer to `$flex-grid` for the full list)* |
+| `{t-value}` | `start`, `stretch`, `between`, `row-nowrap` ... *(refer to `$flex-grid` for the full list)* |
 | `{c-option}` | `index`, `push`, `pull`, `drop`, `lift`, `lead`, `rear` |
 | `{percentage}` | `0`, `5`, `10`, `15`, `16`, `20`, `25`, `30`, `33`, `35`, `40`, `45`, `48`, `50`, `55`, `60`, `65`, `66`, `70`, `75`, `80`, `85`, `90`, `95`, `100` |
 | `{number}` | `0.5`, `1`, `1.5`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9` |
@@ -432,7 +429,7 @@ $flex-grid: (
 </div>
 ```
 
-* **A container on all devices containing one 50% column in the dead center of the container (the cells' container must have a height!)**
+* **A container on all devices containing one 50% column in the dead center of the container (the cells' wrapper must have a bigger height than the cell itself!)**
 
 ```html
 <div class="pack">
@@ -444,7 +441,7 @@ $flex-grid: (
 </div>
 ```
 
-* **A container on large desktops containing two 40% columns pushed to the sides**
+* **A container on large desktops containing two 40% columns pushed to the sides and full-width on mobile**
 
 ```html
 <div class="pack">
@@ -478,7 +475,7 @@ $flex-grid: (
   'pack': ( // the key ('pack') is required and used in mixins, must stay like this.
     'name': 'pack', // value ('pack') is used as pack class-name.
     'map': ( // the key ('map') is required and used in mixins, must stay like this.
-      'xs': 36em, // the key ('xs') is used as breakpoint in class-names, value is used as width.
+      'xs': 36em, // the key ('xs') is used as breakpoint in class-names, the value (36em) is used as width.
       ...
     ),
     'responsive': true, // controls wether media queries (responsive classes) should be generated.
@@ -495,8 +492,8 @@ $flex-grid: (
   ),
   ...
   // everything that has no comment must stay as is, as the mixins expect that key.
-  // when using the 'wrapper' in an option, the placeholder (%var%) is a keyword that the mixin looks for.
-  // if for example 'options' are not need simply replace the value with null.
+  // when using the ('wrapper') in an option, the placeholder (%var%) is a keyword that the mixin looks for.
+  // if for example ('options') are not need simply replace the value with null.
 );
 ```
 
@@ -548,8 +545,8 @@ percentages($map-or-list, $negative-values);
 
 
 ## Links
-* Raw file: [centum@1.0.0.css](https://raw.githubusercontent.com/MarwanAlsoltany/centum/master/dist/centum@1.0.0.css)
-* Raw file: [centum@1.0.0.min.css](https://raw.githubusercontent.com/MarwanAlsoltany/centum/master/dist/centum@1.0.0.min.css)
+* Raw file: [centum.css](https://raw.githubusercontent.com/MarwanAlsoltany/centum/master/dist/centum.css)
+* Raw file: [centum.min.css](https://raw.githubusercontent.com/MarwanAlsoltany/centum/master/dist/centum.min.css)
 * CDN: [jsdelivr.com/package/npm/centum](https://www.jsdelivr.com/package/npm/centum)
 
 
@@ -558,7 +555,7 @@ percentages($map-or-list, $negative-values);
 
 ## License
 
-Centum is an open-sourced package licensed under the [**GNU General Public License v3.0 or later**](./LICENSE).
+Centum is an open-sourced package licensed under the [**MIT License**](./LICENSE).
 <br/>
-Copyright 2020 Marwan Al-Soltany. All rights reserved.
+Copyright (c) 2020 Marwan Al-Soltany. All rights reserved.
 <br/>
