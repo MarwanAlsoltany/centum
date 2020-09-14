@@ -1,6 +1,6 @@
 {
   "name": "centum",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Marwan Al-Soltany <MarwanAlsoltany@gmail.com> (https://marwanalsoltany.github.io/)",
   "license": "MIT",
   "description": "A hundred-based CSS flex grid system with full flexibility to customize it exactly to your needs.",
@@ -22,6 +22,7 @@
   "main": "index.js",
   "scripts": {
     "test": "webpack --config webpack.config.js",
+    "build": "npm run build-dev && npm run build-prod",
     "build-dev": "cross-env NODE_ENV=development webpack --config webpack.config.js && rm -f ./dist/*.{js,js.map}",
     "build-prod": "cross-env NODE_ENV=production webpack --config webpack.config.js && rm -f ./dist/*.{js,js.map}"
   },
