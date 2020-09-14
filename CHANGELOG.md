@@ -24,3 +24,11 @@ All notable changes to Centum will be documented in this file.
 ## [1.0.3] - 2020-05-24
 ### Updated
 - Updated README.md and CHANGELOG.md files.
+
+## [1.0.4] - 2020-09-14
+### Fixed
+- Fixed broken link in demo.html.
+### Changed
+- Changed fallback version in _variables.scss.
+### Updated
+- CSS and CHANGELOG.md files.
