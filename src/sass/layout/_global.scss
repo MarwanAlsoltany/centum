@@ -1,7 +1,7 @@
 :root {
 
-  
   --grid: #{$name + '@' + $version};
+
   @each $breakpoint-name, $breakpoint-value in $breakpoints {
     --breakpoint-#{$breakpoint-name}: #{$breakpoint-value};
   }
